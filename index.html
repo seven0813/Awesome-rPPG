@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Awesome rPPG Method List</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f8f5;
+      --surface: #ffffff;
+      --surface-strong: #eef3ef;
+      --ink: #18211f;
+      --muted: #63716c;
+      --line: #dce4df;
+      --accent: #116c63;
+      --accent-strong: #0c4c46;
+      --pulse: #c83f4f;
+      --amber: #bf7a1f;
+      --shadow: 0 18px 50px rgba(24, 33, 31, 0.10);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(90deg, rgba(17, 108, 99, 0.045) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(17, 108, 99, 0.04) 1px, transparent 1px),
+        var(--bg);
+      background-size: 36px 36px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent-strong);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: -48px;
+      z-index: 20;
+      padding: 10px 14px;
+      color: #fff;
+      background: var(--accent-strong);
+      border-radius: 6px;
+    }
+
+    .skip-link:focus {
+      top: 16px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(220, 228, 223, 0.88);
+      background: rgba(247, 248, 245, 0.92);
+      backdrop-filter: blur(14px);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 12px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      font-weight: 760;
+      letter-spacing: 0;
+      color: var(--ink);
+      white-space: nowrap;
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid rgba(17, 108, 99, 0.3);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(17, 108, 99, 0.12);
+    }
+
+    .mark span {
+      width: 20px;
+      height: 12px;
+      display: block;
+      border-bottom: 3px solid var(--pulse);
+      border-left: 3px solid transparent;
+      border-radius: 50%;
+      transform: rotate(-8deg);
+    }
+
+    .top-nav {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .top-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .top-nav a {
+      flex: 0 0 auto;
+      padding: 8px 10px;
+      border-radius: 6px;
+      color: #394844;
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .top-nav a:hover {
+      background: var(--surface-strong);
+      text-decoration: none;
+    }
+
+    .hero {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 56px 0 34px;
+    }
+
+    .hero-panel {
+      position: relative;
+      overflow: hidden;
+      max-width: 100%;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background:
+        radial-gradient(circle at 82% 24%, rgba(200, 63, 79, 0.16), transparent 24%),
+        linear-gradient(135deg, #ffffff 0%, #f1f6f2 58%, #f6efe6 100%);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 32px;
+      min-height: 390px;
+      padding: clamp(28px, 5vw, 58px);
+      align-items: center;
+    }
+
+    .hero-grid > * {
+      min-width: 0;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      padding: 6px 10px;
+      width: fit-content;
+      border: 1px solid rgba(17, 108, 99, 0.22);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--accent-strong);
+      font-size: 13px;
+      font-weight: 720;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 780px;
+      font-size: clamp(38px, 7vw, 78px);
+      line-height: 0.96;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .intro {
+      max-width: 760px;
+      margin: 22px 0 0;
+      color: #465550;
+      font-size: clamp(16px, 2.3vw, 20px);
+      overflow-wrap: anywhere;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 10px 14px;
+      border-radius: 7px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      font-weight: 720;
+      box-shadow: 0 8px 20px rgba(24, 33, 31, 0.07);
+    }
+
+    .button.primary {
+      border-color: var(--accent);
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .button:hover {
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .signal-board {
+      align-self: stretch;
+      display: grid;
+      align-content: center;
+      gap: 18px;
+      min-width: 0;
+      min-height: 260px;
+      padding: 24px;
+      border: 1px solid rgba(17, 108, 99, 0.18);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.62);
+    }
+
+    .wave {
+      width: 100%;
+      min-width: 0;
+      height: 122px;
+      border-radius: 8px;
+      border: 1px solid rgba(99, 113, 108, 0.2);
+      background:
+        linear-gradient(90deg, rgba(99, 113, 108, 0.13) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(99, 113, 108, 0.13) 1px, transparent 1px),
+        #ffffff;
+      background-size: 22px 22px;
+      overflow: hidden;
+    }
+
+    .wave svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .metric {
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid rgba(220, 228, 223, 0.9);
+      border-radius: 7px;
+      background: #fff;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 650;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr);
+      gap: 28px;
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto 64px;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 78px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.82);
+      box-shadow: 0 10px 26px rgba(24, 33, 31, 0.06);
+    }
+
+    .sidebar-title {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 760;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .side-nav {
+      display: grid;
+      gap: 4px;
+    }
+
+    .side-nav a {
+      display: block;
+      padding: 8px 9px;
+      border-radius: 6px;
+      color: #35433f;
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .side-nav a:hover {
+      background: var(--surface-strong);
+      text-decoration: none;
+    }
+
+    .content {
+      display: grid;
+      gap: 22px;
+      min-width: 0;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.88);
+      box-shadow: 0 10px 26px rgba(24, 33, 31, 0.05);
+    }
+
+    .search {
+      width: 100%;
+      min-height: 44px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 10px 12px;
+      color: var(--ink);
+      background: #fff;
+      font: inherit;
+    }
+
+    .search:focus {
+      outline: 3px solid rgba(17, 108, 99, 0.18);
+      border-color: var(--accent);
+    }
+
+    .count-pill {
+      flex: 0 0 auto;
+      padding: 10px 12px;
+      border-radius: 7px;
+      background: var(--surface-strong);
+      color: var(--accent-strong);
+      font-size: 13px;
+      font-weight: 760;
+    }
+
+    .section {
+      scroll-margin-top: 86px;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 12px 32px rgba(24, 33, 31, 0.07);
+      overflow: hidden;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 22px 16px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff, #f8faf8);
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(22px, 3vw, 32px);
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .section-count {
+      flex: 0 0 auto;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 720;
+    }
+
+    .table-wrap {
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+      background: #fff;
+    }
+
+    th,
+    td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      font-size: 14px;
+    }
+
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #f2f6f3;
+      color: #43514d;
+      font-size: 12px;
+      font-weight: 820;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    td:first-child {
+      width: 62%;
+      font-weight: 620;
+    }
+
+    td:nth-child(2) {
+      width: 20%;
+      color: #4f5e59;
+      white-space: nowrap;
+    }
+
+    td:nth-child(3) {
+      width: 18%;
+      white-space: nowrap;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    tr.is-hidden {
+      display: none;
+    }
+
+    .empty-state {
+      display: none;
+      padding: 24px;
+      color: var(--muted);
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+
+    .section.no-results .empty-state {
+      display: block;
+    }
+
+    .ack {
+      padding: 22px;
+    }
+
+    .ack ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .site-footer {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto 38px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        position: static;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .hero {
+        width: min(1180px, calc(100% - 20px));
+        padding-top: 26px;
+      }
+
+      .hero-grid {
+        padding: 22px;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .layout,
+      .site-footer,
+      .topbar {
+        width: min(1180px, calc(100% - 20px));
+      }
+
+      .signal-board {
+        padding: 16px;
+      }
+
+      .wave {
+        height: 104px;
+      }
+
+      .toolbar,
+      .section-header {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .count-pill,
+      .section-count {
+        width: fit-content;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#papers">Skip to content</a>
+  <header class="site-header">
+    <div class="topbar">
+      <a class="brand" href="#">
+        <span class="mark" aria-hidden="true"><span></span></span>
+        <span>Awesome rPPG</span>
+      </a>
+      <nav class="top-nav" aria-label="Primary">
+        <a href="#survey">Survey</a>
+        <a href="#traditional-methods">Traditional</a>
+        <a href="#supervised-learning">Supervised</a>
+        <a href="#self-supervised-learning">Self-Supervised</a>
+        <a href="#multimodal">Multimodal</a>
+        <a href="#other-methods">Other</a>
+        <a href="#benchmark">Benchmark</a>
+        <a href="#dataset">Dataset</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-panel">
+        <div class="hero-grid">
+          <div>
+            <p class="kicker" id="updated-label">Last updated: 2026-07-02</p>
+            <h1 id="page-title">Awesome-rPPG-Method-List</h1>
+            <p class="intro" id="intro-text"></p>
+            <div class="hero-actions">
+              <a class="button primary" href="#papers">Browse Papers</a>
+              <a class="button" href="README.md">README</a>
+            </div>
+          </div>
+          <div class="signal-board" aria-label="rPPG signal summary">
+            <div class="wave" aria-hidden="true">
+              <svg viewBox="0 0 520 160" role="img">
+                <path d="M0 96 L44 96 L60 58 L78 126 L102 96 L146 96 L164 42 L184 136 L208 96 L254 96 L270 64 L288 120 L314 96 L360 96 L378 50 L398 130 L422 96 L466 96 L482 70 L502 116 L520 96" fill="none" stroke="#c83f4f" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M0 97 L520 97" fill="none" stroke="#116c63" stroke-width="2" stroke-dasharray="8 10" opacity="0.45"/>
+              </svg>
+            </div>
+            <div class="metrics">
+              <div class="metric"><strong id="paper-count">0</strong><span>Papers</span></div>
+              <div class="metric"><strong id="section-count">0</strong><span>Sections</span></div>
+              <div class="metric"><strong id="code-count">0</strong><span>Code Links</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <p class="sidebar-title">Contents</p>
+        <nav class="side-nav" id="side-nav" aria-label="Sections"></nav>
+      </aside>
+
+      <div class="content" id="papers">
+        <div class="toolbar">
+          <input class="search" id="search" type="search" placeholder="Search papers, venues, datasets..." aria-label="Search papers, venues, datasets">
+          <span class="count-pill" id="visible-count">0 shown</span>
+        </div>
+        <div id="sections"></div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <span>Built from README.md content.</span>
+  </footer>
+
+  <script type="text/plain" id="readme-source"># Awesome-rPPG-Method-List
+
+&gt; Last updated: 2026-07-02
+
+This repository is a collection of rPPG methods. I will update it gradually, if you have any suggestions or questions, please feel free to contact me. If you know any other methods, please create a issue or pull request. If you find this repository helpful, please give me a star.
+
+- [Awesome Papers](#Awesome-Papers)
+  - [Survey](#survey)
+  - [Traditional Methods](#traditional-methods)
+  - [Supervised Learning](#supervised-learning)
+  - [Self-Supervised Learning](#self-supervised-learning)
+  - [Other Methods](#other-methods)
+  - [Benchmark](#benchmark)
+  - [Dataset](#dataset)
+- [Acknowledgments](#acknowledgments)
+
+
+## Awesome Papers
+
+### Survey
+
+|  Title  |   Publication  |  Code   |
+|:--------|:--------:|:--------:|
+|[**Remote photoplethysmography for heart rate measurement: A review**](https://www.sciencedirect.com/science/article/abs/pii/S1746809423010418)| Biomedical Signal Processing and Control 2023 | - |
+|[**Camera Measurement of Physiological Vital Signs**](https://arxiv.org/pdf/2111.11547)| ACM Computing Surveys 2021 | - |
+|[**Video-Based Heart Rate Measurement: Recent Advances and Future Prospects**](https://ieeexplore.ieee.org/document/8552414) | TIM 2019 | - |
+
+
+### Traditional Methods
+
+|  Title  |   Publication  |  Code   |
+|:--------|:--------:|:--------:|
+|[**Face2PPG: An Unsupervised Pipeline for Blood Volume Pulse Extraction From Faces**](https://ieeexplore.ieee.org/document/10227326) (**OMIT**)| IEEE JBHI 2023| - |
+|[**Local Group Invariance for Heart Rate Estimation from Face Videos in the Wild**](https://openaccess.thecvf.com/content_cvpr_2018_workshops/papers/w27/Pilz_Local_Group_Invariance_CVPR_2018_paper.pdf) (**LGI**)| CVPR Workshop 2018 | - |
+|[**Algorithmic Principles of Remote PPG**](https://ieeexplore.ieee.org/document/7565547) (**POS**)| IEEE TBME 2016 | - |
+|[**A Novel Algorithm for Remote Photoplethysmography: Spatial Subspace Rotation**](https://ieeexplore.ieee.org/document/7355301) (**2SR**)| IEEE TBME 2015 | - |
+|[**Improved motion robustness of remote-PPG by using the blood volume pulse signature**](https://iopscience.iop.org/article/10.1088/0967-3334/35/9/1913) (**PBV**)| Physiological Measurement 2014 | - |
+|[**Robust Pulse Rate From Chrominance-Based rPPG**](https://ieeexplore.ieee.org/document/6523142) (**CHROM**)| IEEE TBME 2013 | - |
+|[**Measuring pulse rate with a webcam—a non-contact method for evaluating cardiac activity**](https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=7ad15b6fecdb9b2ad49be5bf26efafe22c9a8945) (**PCA**)| FedCSIS 2011 | - |
+|[**Remote plethysmographic imaging using ambient light**](https://pdfs.semanticscholar.org/7cb4/46d61a72f76e774b696515c55c92c7aa32b6.pdf?_gl=1*1q7hzyz*_ga*NTEzMzk5OTY3LjE2ODYxMDg1MjE.*_ga_H7P4ZT52H5*MTY4NjEwODUyMC4xLjAuMTY4NjEwODUyMS41OS4wLjA)| Optics Express 2008 | |
+
+
+### Supervised Learning
+
+|  Title  |   Publication  |  Code   |
+|:--------|:--------:|:--------:|
+|[**FactorizePhys: Matrix Factorization for Multidimensional Attention in Remote Physiological Sensing**](https://openreview.net/pdf?id=qrfp4eeZ47)(**FactorizePhys**) | NeurIPS 2024| [github](https://github.com/PhysiologicAILab/FactorizePhys) |
+|[**Dual-bridging with Adversarial Noise Generation for Domain Adaptive rPPG Estimation**](https://openaccess.thecvf.com/content/CVPR2023/papers/Du_Dual-Bridging_With_Adversarial_Noise_Generation_for_Domain_Adaptive_rPPG_Estimation_CVPR_2023_paper.pdf) | CVPR 2023| -|
+|[**PhysFormer++: Facial Video-Based Physiological Measurement with SlowFast Temporal Difference Transformer**](https://link.springer.com/article/10.1007/s11263-023-01758-1) (**PhysFormer++**)| IJCV 2023| -|
+|[**EfficientPhys: Enabling Simple, Fast and Accurate Camera-Based Cardiac Measurement**](https://openaccess.thecvf.com/content/WACV2023/papers/Liu_EfficientPhys_Enabling_Simple_Fast_and_Accurate_Camera-Based_Cardiac_Measurement_WACV_2023_paper.pdf) (**EfficientPhys**)| WACV 2023| [github](https://github.com/anonymous0paper/EfficientPhys)|
+|[**RADIANT: Better rPPG estimation using signal embeddings and Transformer**](https://openaccess.thecvf.com/content/WACV2023/papers/Gupta_RADIANT_Better_rPPG_Estimation_Using_Signal_Embeddings_and_Transformer_WACV_2023_paper.pdf) (**RADIANT**)| WACV 2023| [github](https://github.com/Deep-Intelligence-Lab/RADIANT)|
+|[**Augmentation of rPPG Benchmark Datasets: Learning to Remove and Embed rPPG Signals via Double Cycle Consistent Learning from Unpaired Facial Videos**](https://link.springer.com/chapter/10.1007/978-3-031-19787-1_21)(**RErPPGNet**) | ECCV 2022| [github](https://github.com/nthumplab/RErPPGNet) |
+|[**PhysFormer: Facial Video-based Physiological Measurement with Temporal Difference Transformer**](https://arxiv.org/pdf/2111.12082) (**PhysFormer**)| CVPR 2022| [github](https://github.com/ZitongYu/PhysFormer)|
+|[**ETA-rPPGNet: Effective Time-Domain Attention Network for Remote Heart Rate Measurement**](https://ieeexplore.ieee.org/abstract/document/9353569) (**ETA-rPPGNet**)| IEEE TIM 2021| - |
+|[**Deep Super-Resolution Network for rPPG Information Recovery and Noncontact Heart Rate Estimation**](https://ieeexplore.ieee.org/document/9529062) | IEEE TIM 2021| - |
+|[**Visual heart rate estimation with convolutional neural network**](https://www.sciencedirect.com/science/article/pii/S2096579620301121) (**NAS-HR**)| Virtual Reality &amp; Intelligent Hardware 2021| [github](https://github.com/LuPaoPao/NAS-HR) |
+|[**Dual-GAN: Joint BVP and Noise Modeling for Remote Physiological Measurement**](https://openaccess.thecvf.com/content/CVPR2021/papers/Lu_Dual-GAN_Joint_BVP_and_Noise_Modeling_for_Remote_Physiological_Measurement_CVPR_2021_paper.pdf) (**Dual-GAN**)| CVPR 2021| -|
+|[**PulseGAN: Learning to Generate Realistic Pulse Waveforms in Remote Photoplethysmography**](https://ieeexplore.ieee.org/document/9320513) (**PulseGAN**)| IEEE JBHI 2021| [github](https://github.com/miki998/PulseGAN)|
+|[**Deep-HR: Fast heart rate estimation from face video under realistic conditions**](https://www.sciencedirect.com/science/article/abs/pii/S0957417421009969) (**Deep-HR**)| Expert Systems with Applications 2021| [github](https://github.com/miki998/PulseGAN)|
+|[**Multi-Task Temporal Shift Attention Networks for On-Device Contactless Vitals Measurement**](https://arxiv.org/pdf/2006.03790) (**MTTS-CAN**)| NeurIPS 2020| [github](https://github.com/xliucs/MTTS-CAN) |
+|[**RhythmNet: End-to-End Heart Rate Estimation From Face via Spatial-Temporal Representation**](http://refhub.elsevier.com/S1746-8094(23)01041-8/sb47) (**RhythmNet**)| IEEE TIP 2020| [github](https://github.com/AnweshCR7/RhythmNet) |
+|[**Video-Based Remote Physiological Measurement via Cross-Verified Feature Disentangling**](http://refhub.elsevier.com/S1746-8094(23)01041-8/sb48) (**CVD**)| ECCV 2020 oral| [github](https://github.com/nxsEdson/CVD-Physiological-Measurement) |
+|[**Siamese-rPPG network: remote photoplethysmography signal estimation from face videos**](https://dl.acm.org/doi/abs/10.1145/3341105.3373905) (**Siamese-rPPG**)| ACM SAC 2020| - |
+|[**AutoHR: A Strong End-to-End Baseline for Remote Heart Rate Measurement With Neural Searching**](https://ieeexplore.ieee.org/document/9133501) (**AutoHR**)| IEEE SPL 2020| - |
+|[**HeartTrack: Convolutional neural network for remote video-based heart rate monitoring**](https://openaccess.thecvf.com/content_CVPRW_2020/papers/w19/Perepelkina_HeartTrack_Convolutional_Neural_Network_for_Remote_Video-Based_Heart_Rate_Monitoring_CVPRW_2020_paper.pdf) (**HeartTrack**)| CVPR Workshop 2020| - |
+|[**Meta-rPPG: Remote Heart Rate Estimation Using a Transductive Meta-learner**](https://link.springer.com/chapter/10.1007/978-3-030-58583-9_24) (**Meta-rPPG**)| ECCV 2020| [github](https://github.com/eugenelet/Meta-rPPG)|
+|[**Long short-term memory deep-filter in remote photoplethysmography**](https://openaccess.thecvf.com/content_CVPRW_2020/papers/w19/Botina-Monsalve_Long_Short-Term_Memory_Deep-Filter_In_Remote_Photoplethysmography_CVPRW_2020_paper.pdf) |CVPR Workshop 2020| -|
+|[**Remote Heart Rate Measurement from Highly Compressed Facial Videos: an End-to-end Deep Learning Solution with Video Enhancement**](https://openaccess.thecvf.com/content_ICCV_2019/papers/Yu_Remote_Heart_Rate_Measurement_From_Highly_Compressed_Facial_Videos_An_ICCV_2019_paper.pdf) (**rPPGNet**)| ICCV 2019| [github](https://github.com/ZitongYu/STVEN_rPPGNet) |
+|[**Remote Photoplethysmograph Signal Measurement from Facial Videos Using Spatio-Temporal Networks**](https://arxiv.org/abs/1905.02419) (**PhysNet**)| BMCV 2019| [github](https://github.com/ZitongYu/PhysNet) |
+|[**3D Convolutional Neural Networks for Remote Pulse Rate Measurement and Mapping from Facial Video**](https://www.mdpi.com/2076-3417/9/20/4364)(**rppg-3dcnn**) | Applied Science 2019| [github](https://github.com/frederic-bousefsaf/ippg-3dcnn) |
+|[**Vision-Based Heart Rate Estimation Via A Two-Stream CNN**](https://ieeexplore.ieee.org/document/8803649) |ICIP 2019| -|
+|[**An Accurate LSTM Based Video Heart Rate Estimation Method**](https://link.springer.com/chapter/10.1007/978-3-030-31726-3_35) |PRCV 2019| -|
+|[**SynRhythm: Learning a Deep Heart Rate Estimator from General to Specificn**](https://ieeexplore.ieee.org/document/8546321)(**SynRhythm**) | ICPR 2018| - |
+|[**EVM-CNN: Real-Time Contactless Heart Rate Estimation From Facial Video**](https://ieeexplore.ieee.org/abstract/document/8552438) (**EVM-CNN**)| IEEE TMM 2018| - |
+|[**DeepPhys: Video-Based Physiological Measurement Using Convolutional Attention Networks**](https://openaccess.thecvf.com/content_ECCV_2018/papers/Weixuan_Chen_DeepPhys_Video-Based_Physiological_ECCV_2018_paper.pdf) (**DeepPhys**)| ECCV 2018| [github](https://github.com/ubicomplab/rPPG-Toolbox) |
+|[**Visual heart rate estimation with convolutional neural network**](https://cmp.felk.cvut.cz/~spetlrad/ecg-fitness/visual-heart-rate.pdf) (**HR-CNN**)| BMVC 2018| [github](https://github.com/radimspetlik/hr-cnn) |
+|[**Instantaneous Physiological Estimation Using Video Transformers**](https://link.springer.com/chapter/10.1007/978-3-031-14771-5_22) (**instantaneous_transformer**)| -| [github](https://github.com/revanurambareesh/instantaneous_transformer)|
+
+### Self-Supervised Learning
+
+|  Title  |   Publication  |  Code   |
+|:--------|:--------:|:--------:|
+|[**rPPG-VQA: A Video Quality Assessment Framework for Unsupervised rPPG Training**](http://arxiv.org/abs/2604.11156) (**rPPG-VQA**)| CVPR 2026 | [github](https://github.com/Tianyang-Dai/rPPG-VQA)|
+|[**Style-rPPG: Exploration and Analysis of Style Transfer in Unsupervised Remote Physiological Measurement**](https://doi.org/10.1016/j.eswa.2024.126310) (**Style-rPPG**)| Expert Systems with Applications 2025 | -|
+|[**Semi-rPPG: Semi-Supervised Remote Physiological Measurement with Curriculum Pseudo-Labeling**](http://arxiv.org/abs/2502.03855) (**Semi-rPPG**)| IEEE TIM 2025 | -|
+|[**rPPG-NDCL: Unsupervised Remote Physiological Measurement Via Noise-Disentangled Contrastive Learning**](https://doi.org/10.1109/ICIP55913.2025.11084290) (**rPPG-NDCL**)| ICIP 2025 | [github](https://github.com/Tianyang-Dai/rPPG-NDCL)|
+|[**Contrast-Phys+: Unsupervised and Weakly-Supervised Video-Based Remote Physiological Measurement via Spatiotemporal Contrast**](https://doi.org/10.1109/TPAMI.2024.3367910) (**Contrast-Phys+**)| IEEE TPAMI 2024 | -|
+|[**RS-rPPG: Robust Self-Supervised Learning for rPPG**](https://brosdocs.net/fg2024/013.pdf) (**RS-rPPG**)| IEEE FG 2024 | [github](https://github.com/marukosan93/RS-rPPG)|
+|[**SiNC+: Adaptive Camera-Based Vitals with Unsupervised Learning of Periodic Signals**](http://arxiv.org/abs/2404.13449) (**SiNC+**)| arXiv 2024 | -|
+|[**Self-Similarity Prior Distillation for Unsupervised Remote Physiological Measurement**](https://doi.org/10.1109/TMM.2024.3405720) (**SSPD**)| IEEE TMM 2024 | -|
+|[**rPPG-MAE: Self-supervised Pre-training with Masked Autoencoders for Remote Physiological Measurement**](https://arxiv.org/abs/2306.02301) (**rPPG-MAE**)| arXiv 2023 | [github](https://github.com/keke-nice/rPPG-MAE)|
+|[**Non-Contrastive Unsupervised Learning of Physiological Signals from Video**](https://openaccess.thecvf.com/content/CVPR2023/papers/Speth_Non-Contrastive_Unsupervised_Learning_of_Physiological_Signals_From_Video_CVPR_2023_paper.pdf) (**SiNC-rPPG**)| CVPR 2023 Highlight | [github](https://github.com/CVRL/SiNC-rPPG)|
+|[**SimPer: Simple Self-Supervised Learning of Periodic Targets**](https://arxiv.org/abs/2210.03115) (**SimPer**)| ICLR 2023 Oral | [github](https://github.com/yyzharry/simper)|
+|[**Neuron Structure Modeling for Generalizable Remote Physiological Measurement**](http://arxiv.org/abs/2303.05955) (**NEST**)| CVPR 2023 | -|
+|[**Facial Video-based Remote Physiological Measurement via Self-supervised Learning**](https://arxiv.org/abs/2210.15401) | IEEE TPAMI 2023 | [github](https://github.com/yuezijie/video-based-remote-physiological-measurement-via-self-supervised-learning)|
+|[**Contactless Pulse Estimation Leveraging Pseudo Labels and Self-Supervision**](https://doi.org/10.1109/ICCV51070.2023.01882) | ICCV 2023 | -|
+|[**Contrast-Phys: Unsupervised Video-Based Remote Physiological Measurement via Spatiotemporal Contrast**](https://link.springer.com/chapter/10.1007/978-3-031-19775-8_29)(**Contrast-Phys**) | ECCV 2022 | [github](https://github.com/zhaodongsun/contrast-phys)|
+|[**Self-Supervised RGB-NIR Fusion Video Vision Transformer Framework for rPPG Estimation**](https://ieeexplore.ieee.org/abstract/document/9931758)| IEEE TIM 2022 | -|
+|[**Self-supervised Representation Learning Framework for Remote Physiological Measurement Using Spatiotemporal Augmentation Loss**](https://arxiv.org/abs/2107.07695)(**SLF-RPM**)| AAAI  2022 | [github](https://github.com/Dylan-H-Wang/SLF-RPM)|
+|[**The Way to my Heart is through Contrastive Learning: Remote Photoplethysmography from Unlabelled Video**](https://arxiv.org/abs/2111.09748)| ICCV  2021 | [github](https://github.com/ToyotaResearchInstitute/RemotePPG)|
+
+
+### Multimodal
+
+|  Title  |   Publication  |  Code   |
+|:--------|:--------:|:--------:|
+|[**CardiacMamba: A Multimodal RGB-RF Fusion Framework with State Space Models for Remote Physiological Measurement**](http://arxiv.org/abs/2502.13624) (**CardiacMamba**)| arXiv 2025 | [github](https://github.com/WuZheng42/CardiacMamba)|
+|[**Spatial Alignment and Temporal Matching Adapter for Video-Radar Remote Physiological Measurement**](https://openaccess.thecvf.com/content/ICCV2025/papers/Liang_Spatial_Alignment_and_Temporal_Matching_Adapter_for_Video-Radar_Remote_Physiological_ICCV_2025_paper.pdf) (**SATM**)| ICCV 2025 | -|
+|[**FusionPhys: A Flexible Framework for Fusing Complementary Sensing Modalities in Remote Physiological Measurement**](https://openaccess.thecvf.com/content/ICCV2025/papers/Ying_FusionPhys_A_Flexible_Framework_for_Fusing_Complementary_Sensing_Modalities_in_ICCV_2025_paper.pdf) (**FusionPhys**)| ICCV 2025 | [github](https://github.com/chh-ying/fusionphys)|
+|[**Fusion-Vital: Video-RF Fusion Transformer for Advanced Remote Physiological Measurement**](https://ojs.aaai.org/index.php/AAAI/article/view/27898) (**Fusion-Vital**)| AAAI 2024 | -|
+|[**Blending Camera and 77 GHz Radar Sensing for Equitable, Robust Plethysmography**](https://dl.acm.org/doi/10.1145/3528223.3530161) | ACM TOG 2022 | -|
+
+
+### Other Methods
+
+|  Title  |   Publication  |  Code   |
+|:--------|:--------:|:--------:|
+|[**Continual Learning for Remote Physiological Measurement: Minimize Forgetting and Simplify Inference**](https://arxiv.org/abs/2407.13974) | ECCV 2024| [github](https://github.com/mayyoy/rppgdil) |
+|[**Bi-TTA: Bidirectional Test-Time Adapter for Remote Physiological Measurement**](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/01774.pdf)(**Bi-TTA**) | ECCV 2024| - |
+|[**Resolve Domain Conflicts for Generalizable Remote Physiological Measurement**](https://dl.acm.org/doi/10.1145/3581783.3612265) (**DOHA-rPPG**)| ACM MM 2023| [github](https://github.com/swy666/rppg-doha) |
+
+
+### Benchmark
+
+|  Title  |   Publication  |  Code   |
+|:--------|:--------:|:--------:|
+|[**rPPG-Toolbox: Deep Remote PPG Toolbox**](https://arxiv.org/abs/2210.00716) (**rPPG-Toolbox**)| NeurIPS 2023 | [github](https://github.com/ubicomplab/rPPG-Toolbox)|
+|[**Remote Bio-Sensing: Open Source Benchmark Framework for Fair Evaluation of rPPG**](https://arxiv.org/abs/2307.12644) | arXiv 2023 | [github](https://github.com/remotebiosensing/rppg)|
+|[**pyVHR: a Python framework for remote photoplethysmography**](https://pubmed.ncbi.nlm.nih.gov/35494872/)(**pyVHR**) | Computer Science 2022 | [github](https://github.com/phuselab/pyVHR)|
+|[**Evaluation of biases in remote photoplethysmography methods**](https://www.nature.com/articles/s41746-021-00462-z)(matlab) | npj Digital Medicine 2021 | [github](https://github.com/partofthestars/PPGI-Toolbox)|
+|[**iPhys: An Open Non-Contact Imaging-Based Physiological Measurement Toolbox**](https://arxiv.org/pdf/1901.04366)(matlab) | arXiv, 2019 | [github](https://github.com/danmcduff/iphys-toolbox)|
+
+
+### Dataset
+
+|  Title  |   Publication  |  Url   |
+|:--------|:--------:|:--------:|
+|[**iBVP Dataset: RGB-Thermal rPPG Dataset with High Resolution Signal Quality Labels**](https://doi.org/10.3390/electronics13071334)(**iBVP**) | Electronics 2024 | [download](https://github.com/PhysiologicAILab/iBVP-Dataset)|
+|[**ReactioNet: Learning High-order Facial Behavior from Universal Stimulus-Reaction by Dyadic Relation Reasoning**](https://openaccess.thecvf.com/content/ICCV2023/papers/Li_ReactioNet_Learning_High-Order_Facial_Behavior_from_Universal_Stimulus-Reaction_by_Dyadic_ICCV_2023_paper.pdf)(**BP4D+**) | ICCV 2023 | [download](https://www.cs.binghamton.edu/~lijun/Research/3DFE/3DFE_Analysis.html)|
+[**MMPD: Multi-Domain Mobile Video Physiology Dataset**](https://arxiv.org/pdf/2302.03840)(**MMPD**) | EMBC 2023 | [download](https://github.com/McJackTang/MMPD_rPPG_dataset?tab=readme-ov-file)|
+|[**SCAMPS: Synthetics for Camera Measurement of Physiological Signals**](https://proceedings.neurips.cc/paper_files/paper/2022/file/1838feeb71c4b4ea524d0df2f7074245-Paper-Datasets_and_Benchmarks.pdf)(**SCAMPS**) | NeurIPS 2022 | [download](https://github.com/danmcduff/scampsdataset)|
+|[**Synthetic Generation of Face Videos with Plethysmograph Physiology**](https://openaccess.thecvf.com/content/CVPR2022/papers/Wang_Synthetic_Generation_of_Face_Videos_With_Plethysmograph_Physiology_CVPR_2022_paper.pdf) (**UCLA-rPPG**) | CVPR 2022 | [download](http://visual.ee.ucla.edu/rppg_avatars.htm/)|
+|[**Deception Detection and Remote Physiological Monitoring: A Dataset and Baseline Experimental Results**](https://arxiv.org/pdf/2106.06583) (**DDPM**) | IEEE TBIOM 2021 | [download](https://cvrl.nd.edu/projects/data/#deception-detection-and-%20physiological-monitoringddpm)|
+|[**UBFC-Phys: A Multimodal Database For Psychophysiological Studies Of Social Stress**](https://ieeexplore.ieee.org/document/9346017) (**UBFC-Phys**) | IEEE TAFFC 2021 | [download](https://sites.google.com/view/ybenezeth/ubfc-phys)|
+|[**VIPL-HR: A Multi-modal Database for Pulse Estimation from Less-constrained Face Video**](https://arxiv.org/pdf/1810.04927v2) (**VIPL-HR**) | ACCV 2018 | [download](http://vipl.ict.ac.cn/database.php)|
+|[**A Reproducible Study on Remote Heart Rate Measurement**](https://arxiv.org/pdf/1709.00962) (**COHFACE**) | arXiv 2017 | [download](https://www.idiap.ch/en/scientific-research/data/cohface)|
+|[**Unsupervised skin tissue segmentation for remote photoplethysmography**](https://www.sciencedirect.com/science/article/pii/S0167865517303860) (**UBFC-rPPG**) | Pattern Recognition Letters 2017 | [download](https://sites.google.com/view/ybenezeth/ubfcrppg)|
+|[**Multimodal Spontaneous Emotion Corpus for Human Behavior Analysis**](https://openaccess.thecvf.com/content_cvpr_2016/papers/Zhang_Multimodal_Spontaneous_Emotion_CVPR_2016_paper.pdf) (**MMSE-HR**) | CVPR 2016 | [download](https://binghamton.technologypublisher.com/tech/MMSE-HR_dataset_(Multimodal_Spontaneous_Expression-Heart_Rate_dataset))|
+|[**Non-contact Video-based Pulse Rate Measurement on a Mobile Service Robot**](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6926392) (**PURE**) |  2014 | [download](https://www.tu-ilmenau.de/universitaet/fakultaeten/fakultaet-informatik-und-automatisierung/profil/institute-und-fachgebiete/institut-fuer-technische-informatik-und-ingenieurinformatik/fachgebiet-neuroinformatik-und-kognitive-robotik/data-sets-code/pulse-rate-detection-dataset-pure)|
+|[**DEAP: A Database for Emotion Analysis Using Physiological Signals**](https://ieeexplore.ieee.org/document/5871728) (**DEAP**) | IEEE TAFFC 2011 | [download](https://www.eecs.qmul.ac.uk/mmv/datasets/deap/)|
+
+
+
+
+## Acknowledgments
+
+- https://github.com/zx-pan/Awesome-rPPG</script>
+
+  <script>
+    const source = document.getElementById("readme-source").textContent
+      .replaceAll("&gt;", ">")
+      .replaceAll("&amp;", "&");
+
+    const slug = (text) => text.toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
+    const escapeHtml = (text) => text
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;");
+
+    function inlineMarkdown(text) {
+      let html = escapeHtml(text.trim());
+      html = html.replace(/\[(.*?)\]\((.*?)\)/g, (_, label, href) => {
+        const cleanLabel = label.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+        return `<a href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">${cleanLabel}</a>`;
+      });
+      html = html.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+      return html;
+    }
+
+    function splitTableRow(line) {
+      let normalized = line.trim();
+      if (!normalized.startsWith("|")) normalized = `|${normalized}`;
+      if (!normalized.endsWith("|")) normalized = `${normalized}|`;
+      return normalized.slice(1, -1).split("|").map((cell) => cell.trim());
+    }
+
+    function parseReadme(markdown) {
+      const lines = markdown.split(/\r?\n/);
+      const sections = [];
+      let title = "";
+      let updated = "";
+      let intro = "";
+      let acknowledgments = [];
+      let current = null;
+
+      for (let i = 0; i < lines.length; i += 1) {
+        const line = lines[i];
+        const trimmed = line.trim();
+
+        if (trimmed.startsWith("# ")) {
+          title = trimmed.replace(/^#\s+/, "");
+          continue;
+        }
+
+        if (trimmed.startsWith("> Last updated:")) {
+          updated = trimmed.replace(/^>\s*/, "");
+          continue;
+        }
+
+        if (!intro && trimmed && !trimmed.startsWith("-") && !trimmed.startsWith("#") && !trimmed.startsWith("|")) {
+          intro = trimmed;
+          continue;
+        }
+
+        if (trimmed.startsWith("### ")) {
+          current = {
+            title: trimmed.replace(/^###\s+/, ""),
+            headers: [],
+            rows: []
+          };
+          sections.push(current);
+          continue;
+        }
+
+        if (trimmed === "## Acknowledgments") {
+          current = null;
+          while (i + 1 < lines.length) {
+            i += 1;
+            const ack = lines[i].trim();
+            if (ack.startsWith("- ")) acknowledgments.push(ack.slice(2));
+          }
+          continue;
+        }
+
+        if (!current) continue;
+
+        if (trimmed.includes("|") && !trimmed.startsWith("|:")) {
+          const cells = splitTableRow(trimmed);
+          if (cells.length >= 3 && cells.some(Boolean)) {
+            if (/title/i.test(cells[0]) && /publication/i.test(cells[1])) {
+              current.headers = cells.slice(0, 3);
+            } else {
+              current.rows.push(cells.slice(0, 3));
+            }
+          }
+        }
+      }
+
+      return { title, updated, intro, sections, acknowledgments };
+    }
+
+    function renderSection(section) {
+      const id = slug(section.title);
+      const rows = section.rows.map((row) => `
+        <tr data-search="${escapeHtml(row.join(" ").toLowerCase())}">
+          ${row.map((cell) => `<td>${inlineMarkdown(cell || "-")}</td>`).join("")}
+        </tr>
+      `).join("");
+
+      return `
+        <section class="section" id="${id}" data-section="${escapeHtml(section.title)}">
+          <div class="section-header">
+            <h2>${escapeHtml(section.title)}</h2>
+            <span class="section-count">${section.rows.length} entries</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>${section.headers.map((header) => `<th>${escapeHtml(header)}</th>`).join("")}</tr>
+              </thead>
+              <tbody>${rows}</tbody>
+            </table>
+          </div>
+          <div class="empty-state">No matching entries in this section.</div>
+        </section>
+      `;
+    }
+
+    function renderAcknowledgments(items) {
+      if (!items.length) return "";
+      return `
+        <section class="section" id="acknowledgments">
+          <div class="section-header">
+            <h2>Acknowledgments</h2>
+          </div>
+          <div class="ack">
+            <ul>${items.map((item) => `<li>${inlineMarkdown(item)}</li>`).join("")}</ul>
+          </div>
+        </section>
+      `;
+    }
+
+    const data = parseReadme(source);
+    const totalRows = data.sections.reduce((sum, section) => sum + section.rows.length, 0);
+    const codeLinks = data.sections.reduce((sum, section) => {
+      return sum + section.rows.filter((row) => /github|download/i.test(row[2] || "")).length;
+    }, 0);
+
+    document.title = data.title;
+    document.getElementById("page-title").textContent = data.title;
+    document.getElementById("updated-label").textContent = data.updated;
+    document.getElementById("intro-text").textContent = data.intro;
+    document.getElementById("paper-count").textContent = totalRows;
+    document.getElementById("section-count").textContent = data.sections.length;
+    document.getElementById("code-count").textContent = codeLinks;
+    document.getElementById("visible-count").textContent = `${totalRows} shown`;
+    document.getElementById("sections").innerHTML = data.sections.map(renderSection).join("") + renderAcknowledgments(data.acknowledgments);
+    document.getElementById("side-nav").innerHTML = data.sections.map((section) => {
+      return `<a href="#${slug(section.title)}">${escapeHtml(section.title)}</a>`;
+    }).join("") + `<a href="#acknowledgments">Acknowledgments</a>`;
+
+    const search = document.getElementById("search");
+    const visibleCount = document.getElementById("visible-count");
+
+    search.addEventListener("input", () => {
+      const query = search.value.trim().toLowerCase();
+      let visible = 0;
+
+      document.querySelectorAll(".section[data-section]").forEach((section) => {
+        let sectionVisible = 0;
+        section.querySelectorAll("tbody tr").forEach((row) => {
+          const match = !query || row.dataset.search.includes(query);
+          row.classList.toggle("is-hidden", !match);
+          if (match) {
+            visible += 1;
+            sectionVisible += 1;
+          }
+        });
+        section.classList.toggle("no-results", sectionVisible === 0);
+      });
+
+      visibleCount.textContent = `${visible} shown`;
+    });
+  </script>
+</body>
+</html>
