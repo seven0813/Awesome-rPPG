@@ -1,27 +1,19 @@
 # Awesome-rPPG-Method-List
 
-This repository is a collection of awesome rPPG methods. I will update it gradually, if you have any suggestions or questions, please feel free to contact me. If you know any other methods, please create a issue or pull request. If you find this repository helpful, please give me a star.
+> Last updated: 2026-07-02
 
-## Table of Contents
+This repository is a collection of rPPG methods. I will update it gradually, if you have any suggestions or questions, please feel free to contact me. If you know any other methods, please create a issue or pull request. If you find this repository helpful, please give me a star.
 
->The classification of the paper references the [paper](https://www.sciencedirect.com/science/article/abs/pii/S1746809423010418)
-
-- [Awesome-rPPG-Method-List](#Awesome-rPPG-Method-List)
-  - [Table of Contents](#table-of-contents)
-  - [Awesome Papers](#Awesome-Papers)
-    - [Survey](#survey)
-    - [Traditional Methods](#traditional-methods)
-    - [Supervised Learning](#supervised-learning)
-       - [2D CNN](#2d-cnn)
-       - [3D CNN](#3d-cnn)
-       - [RNN](#rnn)
-       - [GAN](#gan)
-       - [Transformer](#transformer)
-    - [Unsupervised Learning](#unsupervised-learning)
-    - [Other Methods](#other-methods)
-    - [Benchmark](#benchmark)
-    - [Dataset](#dataset)
-  - [Acknowledgments](#acknowledgments)
+- [Awesome Papers](#Awesome-Papers)
+  - [Survey](#survey)
+  - [Traditional Methods](#traditional-methods)
+  - [Supervised Learning](#supervised-learning)
+  - [Self-Supervised Learning](#self-supervised-learning)
+  - [Multimodal](#multimodal)
+  - [Other Methods](#other-methods)
+  - [Benchmark](#benchmark)
+  - [Dataset](#dataset)
+- [Acknowledgments](#acknowledgments)
 
 
 ## Awesome Papers
@@ -51,76 +43,72 @@ This repository is a collection of awesome rPPG methods. I will update it gradua
 
 ### Supervised Learning
 
-#### 2D CNN
-
 |  Title  |   Publication  |  Code   |
 |:--------|:--------:|:--------:|
+|[**FactorizePhys: Matrix Factorization for Multidimensional Attention in Remote Physiological Sensing**](https://openreview.net/pdf?id=qrfp4eeZ47)(**FactorizePhys**) | NeurIPS 2024| [github](https://github.com/PhysiologicAILab/FactorizePhys) |
+|[**Dual-bridging with Adversarial Noise Generation for Domain Adaptive rPPG Estimation**](https://openaccess.thecvf.com/content/CVPR2023/papers/Du_Dual-Bridging_With_Adversarial_Noise_Generation_for_Domain_Adaptive_rPPG_Estimation_CVPR_2023_paper.pdf) | CVPR 2023| -|
+|[**PhysFormer++: Facial Video-Based Physiological Measurement with SlowFast Temporal Difference Transformer**](https://link.springer.com/article/10.1007/s11263-023-01758-1) (**PhysFormer++**)| IJCV 2023| -|
+|[**EfficientPhys: Enabling Simple, Fast and Accurate Camera-Based Cardiac Measurement**](https://openaccess.thecvf.com/content/WACV2023/papers/Liu_EfficientPhys_Enabling_Simple_Fast_and_Accurate_Camera-Based_Cardiac_Measurement_WACV_2023_paper.pdf) (**EfficientPhys**)| WACV 2023| [github](https://github.com/anonymous0paper/EfficientPhys)|
+|[**RADIANT: Better rPPG estimation using signal embeddings and Transformer**](https://openaccess.thecvf.com/content/WACV2023/papers/Gupta_RADIANT_Better_rPPG_Estimation_Using_Signal_Embeddings_and_Transformer_WACV_2023_paper.pdf) (**RADIANT**)| WACV 2023| [github](https://github.com/Deep-Intelligence-Lab/RADIANT)|
+|[**Augmentation of rPPG Benchmark Datasets: Learning to Remove and Embed rPPG Signals via Double Cycle Consistent Learning from Unpaired Facial Videos**](https://link.springer.com/chapter/10.1007/978-3-031-19787-1_21)(**RErPPGNet**) | ECCV 2022| [github](https://github.com/nthumplab/RErPPGNet) |
+|[**PhysFormer: Facial Video-based Physiological Measurement with Temporal Difference Transformer**](https://arxiv.org/pdf/2111.12082) (**PhysFormer**)| CVPR 2022| [github](https://github.com/ZitongYu/PhysFormer)|
+|[**ETA-rPPGNet: Effective Time-Domain Attention Network for Remote Heart Rate Measurement**](https://ieeexplore.ieee.org/abstract/document/9353569) (**ETA-rPPGNet**)| IEEE TIM 2021| - |
+|[**Deep Super-Resolution Network for rPPG Information Recovery and Noncontact Heart Rate Estimation**](https://ieeexplore.ieee.org/document/9529062) | IEEE TIM 2021| - |
 |[**Visual heart rate estimation with convolutional neural network**](https://www.sciencedirect.com/science/article/pii/S2096579620301121) (**NAS-HR**)| Virtual Reality & Intelligent Hardware 2021| [github](https://github.com/LuPaoPao/NAS-HR) |
+|[**Dual-GAN: Joint BVP and Noise Modeling for Remote Physiological Measurement**](https://openaccess.thecvf.com/content/CVPR2021/papers/Lu_Dual-GAN_Joint_BVP_and_Noise_Modeling_for_Remote_Physiological_Measurement_CVPR_2021_paper.pdf) (**Dual-GAN**)| CVPR 2021| -|
+|[**PulseGAN: Learning to Generate Realistic Pulse Waveforms in Remote Photoplethysmography**](https://ieeexplore.ieee.org/document/9320513) (**PulseGAN**)| IEEE JBHI 2021| [github](https://github.com/miki998/PulseGAN)|
+|[**Deep-HR: Fast heart rate estimation from face video under realistic conditions**](https://www.sciencedirect.com/science/article/abs/pii/S0957417421009969) (**Deep-HR**)| Expert Systems with Applications 2021| [github](https://github.com/miki998/PulseGAN)|
 |[**Multi-Task Temporal Shift Attention Networks for On-Device Contactless Vitals Measurement**](https://arxiv.org/pdf/2006.03790) (**MTTS-CAN**)| NeurIPS 2020| [github](https://github.com/xliucs/MTTS-CAN) |
 |[**RhythmNet: End-to-End Heart Rate Estimation From Face via Spatial-Temporal Representation**](http://refhub.elsevier.com/S1746-8094(23)01041-8/sb47) (**RhythmNet**)| IEEE TIP 2020| [github](https://github.com/AnweshCR7/RhythmNet) |
 |[**Video-Based Remote Physiological Measurement via Cross-Verified Feature Disentangling**](http://refhub.elsevier.com/S1746-8094(23)01041-8/sb48) (**CVD**)| ECCV 2020 oral| [github](https://github.com/nxsEdson/CVD-Physiological-Measurement) |
+|[**Siamese-rPPG network: remote photoplethysmography signal estimation from face videos**](https://dl.acm.org/doi/abs/10.1145/3341105.3373905) (**Siamese-rPPG**)| ACM SAC 2020| - |
+|[**AutoHR: A Strong End-to-End Baseline for Remote Heart Rate Measurement With Neural Searching**](https://ieeexplore.ieee.org/document/9133501) (**AutoHR**)| IEEE SPL 2020| - |
+|[**HeartTrack: Convolutional neural network for remote video-based heart rate monitoring**](https://openaccess.thecvf.com/content_CVPRW_2020/papers/w19/Perepelkina_HeartTrack_Convolutional_Neural_Network_for_Remote_Video-Based_Heart_Rate_Monitoring_CVPRW_2020_paper.pdf) (**HeartTrack**)| CVPR Workshop 2020| - |
+|[**Meta-rPPG: Remote Heart Rate Estimation Using a Transductive Meta-learner**](https://link.springer.com/chapter/10.1007/978-3-030-58583-9_24) (**Meta-rPPG**)| ECCV 2020| [github](https://github.com/eugenelet/Meta-rPPG)|
+|[**Long short-term memory deep-filter in remote photoplethysmography**](https://openaccess.thecvf.com/content_CVPRW_2020/papers/w19/Botina-Monsalve_Long_Short-Term_Memory_Deep-Filter_In_Remote_Photoplethysmography_CVPRW_2020_paper.pdf) |CVPR Workshop 2020| -|
+|[**Remote Heart Rate Measurement from Highly Compressed Facial Videos: an End-to-end Deep Learning Solution with Video Enhancement**](https://openaccess.thecvf.com/content_ICCV_2019/papers/Yu_Remote_Heart_Rate_Measurement_From_Highly_Compressed_Facial_Videos_An_ICCV_2019_paper.pdf) (**rPPGNet**)| ICCV 2019| [github](https://github.com/ZitongYu/STVEN_rPPGNet) |
+|[**Remote Photoplethysmograph Signal Measurement from Facial Videos Using Spatio-Temporal Networks**](https://arxiv.org/abs/1905.02419) (**PhysNet**)| BMCV 2019| [github](https://github.com/ZitongYu/PhysNet) |
+|[**3D Convolutional Neural Networks for Remote Pulse Rate Measurement and Mapping from Facial Video**](https://www.mdpi.com/2076-3417/9/20/4364)(**rppg-3dcnn**) | Applied Science 2019| [github](https://github.com/frederic-bousefsaf/ippg-3dcnn) |
+|[**Vision-Based Heart Rate Estimation Via A Two-Stream CNN**](https://ieeexplore.ieee.org/document/8803649) |ICIP 2019| -|
+|[**An Accurate LSTM Based Video Heart Rate Estimation Method**](https://link.springer.com/chapter/10.1007/978-3-030-31726-3_35) |PRCV 2019| -|
 |[**SynRhythm: Learning a Deep Heart Rate Estimator from General to Specificn**](https://ieeexplore.ieee.org/document/8546321)(**SynRhythm**) | ICPR 2018| - |
 |[**EVM-CNN: Real-Time Contactless Heart Rate Estimation From Facial Video**](https://ieeexplore.ieee.org/abstract/document/8552438) (**EVM-CNN**)| IEEE TMM 2018| - |
 |[**DeepPhys: Video-Based Physiological Measurement Using Convolutional Attention Networks**](https://openaccess.thecvf.com/content_ECCV_2018/papers/Weixuan_Chen_DeepPhys_Video-Based_Physiological_ECCV_2018_paper.pdf) (**DeepPhys**)| ECCV 2018| [github](https://github.com/ubicomplab/rPPG-Toolbox) |
 |[**Visual heart rate estimation with convolutional neural network**](https://cmp.felk.cvut.cz/~spetlrad/ecg-fitness/visual-heart-rate.pdf) (**HR-CNN**)| BMVC 2018| [github](https://github.com/radimspetlik/hr-cnn) |
-
-
-#### 3D CNN
-
-|  Title  |   Publication  |  Code   |
-|:--------|:--------:|:--------:|
-|[**FactorizePhys: Matrix Factorization for Multidimensional Attention in Remote Physiological Sensing**](https://openreview.net/pdf?id=qrfp4eeZ47)(**FactorizePhys**) | NeurIPS 2024| [github](https://github.com/PhysiologicAILab/FactorizePhys) |
-|[**Augmentation of rPPG Benchmark Datasets: Learning to Remove and Embed rPPG Signals via Double Cycle Consistent Learning from Unpaired Facial Videos**](https://link.springer.com/chapter/10.1007/978-3-031-19787-1_21)(**RErPPGNet**) | ECCV 2022| [github](https://github.com/nthumplab/RErPPGNet) |
-|[**ETA-rPPGNet: Effective Time-Domain Attention Network for Remote Heart Rate Measurement**](https://ieeexplore.ieee.org/abstract/document/9353569) (**ETA-rPPGNet**)| IEEE TIM 2021| - |
-|[**Deep Super-Resolution Network for rPPG Information Recovery and Noncontact Heart Rate Estimation**](https://ieeexplore.ieee.org/document/9529062) | IEEE TIM 2021| - |
-|[**Siamese-rPPG network: remote photoplethysmography signal estimation from face videos**](https://dl.acm.org/doi/abs/10.1145/3341105.3373905) (**Siamese-rPPG**)| ACM SAC 2020| - |
-|[**AutoHR: A Strong End-to-End Baseline for Remote Heart Rate Measurement With Neural Searching**](https://ieeexplore.ieee.org/document/9133501) (**AutoHR**)| IEEE SPL 2020| - |
-|[**HeartTrack: Convolutional neural network for remote video-based heart rate monitoring**](https://openaccess.thecvf.com/content_CVPRW_2020/papers/w19/Perepelkina_HeartTrack_Convolutional_Neural_Network_for_Remote_Video-Based_Heart_Rate_Monitoring_CVPRW_2020_paper.pdf) (**HeartTrack**)| CVPR Workshop 2020| - |
-|[**Remote Heart Rate Measurement from Highly Compressed Facial Videos: an End-to-end Deep Learning Solution with Video Enhancement**](https://openaccess.thecvf.com/content_ICCV_2019/papers/Yu_Remote_Heart_Rate_Measurement_From_Highly_Compressed_Facial_Videos_An_ICCV_2019_paper.pdf) (**rPPGNet**)| ICCV 2019| [github](https://github.com/ZitongYu/STVEN_rPPGNet) |
-|[**Remote Photoplethysmograph Signal Measurement from Facial Videos Using Spatio-Temporal Networks**](https://arxiv.org/abs/1905.02419) (**PhysNet**)| BMCV 2019| [github](https://github.com/ZitongYu/PhysNet) |
-|[**3D Convolutional Neural Networks for Remote Pulse Rate Measurement and Mapping from Facial Video**](https://www.mdpi.com/2076-3417/9/20/4364)(**rppg-3dcnn**) | Applied Science 2019| [github](https://github.com/frederic-bousefsaf/ippg-3dcnn) |
-
-#### RNN
-
-|  Title  |   Publication  |  Code   |
-|:--------|:--------:|:--------:|
-|[**Meta-rPPG: Remote Heart Rate Estimation Using a Transductive Meta-learner**](https://link.springer.com/chapter/10.1007/978-3-030-58583-9_24) (**Meta-rPPG**)| ECCV 2020| [github](https://github.com/eugenelet/Meta-rPPG)|
-|[**Long short-term memory deep-filter in remote photoplethysmography**](https://openaccess.thecvf.com/content_CVPRW_2020/papers/w19/Botina-Monsalve_Long_Short-Term_Memory_Deep-Filter_In_Remote_Photoplethysmography_CVPRW_2020_paper.pdf) |CVPR Workshop 2020| -|
-|[**Vision-Based Heart Rate Estimation Via A Two-Stream CNN**](https://ieeexplore.ieee.org/document/8803649) |ICIP 2019| -|
-|[**An Accurate LSTM Based Video Heart Rate Estimation Method**](https://link.springer.com/chapter/10.1007/978-3-030-31726-3_35) |PRCV 2019| -|
-
-#### GAN
-
-|  Title  |   Publication  |  Code   |
-|:--------|:--------:|:--------:|
-|[**Dual-bridging with Adversarial Noise Generation for Domain Adaptive rPPG Estimation**](https://openaccess.thecvf.com/content/CVPR2023/papers/Du_Dual-Bridging_With_Adversarial_Noise_Generation_for_Domain_Adaptive_rPPG_Estimation_CVPR_2023_paper.pdf) | CVPR 2023| -|
-|[**Dual-GAN: Joint BVP and Noise Modeling for Remote Physiological Measurement**](https://openaccess.thecvf.com/content/CVPR2021/papers/Lu_Dual-GAN_Joint_BVP_and_Noise_Modeling_for_Remote_Physiological_Measurement_CVPR_2021_paper.pdf) (**Dual-GAN**)| CVPR 2021| -|
-|[**PulseGAN: Learning to Generate Realistic Pulse Waveforms in Remote Photoplethysmography**](https://ieeexplore.ieee.org/document/9320513) (**PulseGAN**)| IEEE JBHI 2021| [github](https://github.com/miki998/PulseGAN)|
-|[**Deep-HR: Fast heart rate estimation from face video under realistic conditions**](https://www.sciencedirect.com/science/article/abs/pii/S0957417421009969) (**Deep-HR**)| Expert Systems with Applications 2021| [github](https://github.com/miki998/PulseGAN)|
-
-#### Transformer
-
-|  Title  |   Publication  |  Code   |
-|:--------|:--------:|:--------:|
-|[**PhysFormer++: Facial Video-Based Physiological Measurement with SlowFast Temporal Difference Transformer**](https://link.springer.com/article/10.1007/s11263-023-01758-1) (**PhysFormer++**)| IJCV 2023| -|
-|[**EfficientPhys: Enabling Simple, Fast and Accurate Camera-Based Cardiac Measurement**](https://openaccess.thecvf.com/content/WACV2023/papers/Liu_EfficientPhys_Enabling_Simple_Fast_and_Accurate_Camera-Based_Cardiac_Measurement_WACV_2023_paper.pdf) (**EfficientPhys**)| WACV 2023| [github](https://github.com/anonymous0paper/EfficientPhys)|
-|[**RADIANT: Better rPPG estimation using signal embeddings and Transformer**](https://openaccess.thecvf.com/content/WACV2023/papers/Gupta_RADIANT_Better_rPPG_Estimation_Using_Signal_Embeddings_and_Transformer_WACV_2023_paper.pdf) (**RADIANT**)| WACV 2023| [github](https://github.com/Deep-Intelligence-Lab/RADIANT)|
-|[**PhysFormer: Facial Video-based Physiological Measurement with Temporal Difference Transformer**](https://arxiv.org/pdf/2111.12082) (**PhysFormer**)| CVPR 2022| [github](https://github.com/ZitongYu/PhysFormer)|
 |[**Instantaneous Physiological Estimation Using Video Transformers**](https://link.springer.com/chapter/10.1007/978-3-031-14771-5_22) (**instantaneous_transformer**)| -| [github](https://github.com/revanurambareesh/instantaneous_transformer)|
 
-### Unsupervised Learning
+### Self-Supervised Learning
 
 |  Title  |   Publication  |  Code   |
 |:--------|:--------:|:--------:|
+|[**rPPG-VQA: A Video Quality Assessment Framework for Unsupervised rPPG Training**](http://arxiv.org/abs/2604.11156) (**rPPG-VQA**)| CVPR 2026 | [github](https://github.com/Tianyang-Dai/rPPG-VQA)|
+|[**Style-rPPG: Exploration and Analysis of Style Transfer in Unsupervised Remote Physiological Measurement**](https://doi.org/10.1016/j.eswa.2024.126310) (**Style-rPPG**)| Expert Systems with Applications 2025 | -|
+|[**Semi-rPPG: Semi-Supervised Remote Physiological Measurement with Curriculum Pseudo-Labeling**](http://arxiv.org/abs/2502.03855) (**Semi-rPPG**)| IEEE TIM 2025 | -|
+|[**rPPG-NDCL: Unsupervised Remote Physiological Measurement Via Noise-Disentangled Contrastive Learning**](https://doi.org/10.1109/ICIP55913.2025.11084290) (**rPPG-NDCL**)| ICIP 2025 | [github](https://github.com/Tianyang-Dai/rPPG-NDCL)|
+|[**Contrast-Phys+: Unsupervised and Weakly-Supervised Video-Based Remote Physiological Measurement via Spatiotemporal Contrast**](https://doi.org/10.1109/TPAMI.2024.3367910) (**Contrast-Phys+**)| IEEE TPAMI 2024 | -|
 |[**RS-rPPG: Robust Self-Supervised Learning for rPPG**](https://brosdocs.net/fg2024/013.pdf) (**RS-rPPG**)| IEEE FG 2024 | [github](https://github.com/marukosan93/RS-rPPG)|
+|[**SiNC+: Adaptive Camera-Based Vitals with Unsupervised Learning of Periodic Signals**](http://arxiv.org/abs/2404.13449) (**SiNC+**)| arXiv 2024 | -|
+|[**Self-Similarity Prior Distillation for Unsupervised Remote Physiological Measurement**](https://doi.org/10.1109/TMM.2024.3405720) (**SSPD**)| IEEE TMM 2024 | -|
 |[**rPPG-MAE: Self-supervised Pre-training with Masked Autoencoders for Remote Physiological Measurement**](https://arxiv.org/abs/2306.02301) (**rPPG-MAE**)| arXiv 2023 | [github](https://github.com/keke-nice/rPPG-MAE)|
 |[**Non-Contrastive Unsupervised Learning of Physiological Signals from Video**](https://openaccess.thecvf.com/content/CVPR2023/papers/Speth_Non-Contrastive_Unsupervised_Learning_of_Physiological_Signals_From_Video_CVPR_2023_paper.pdf) (**SiNC-rPPG**)| CVPR 2023 Highlight | [github](https://github.com/CVRL/SiNC-rPPG)|
 |[**SimPer: Simple Self-Supervised Learning of Periodic Targets**](https://arxiv.org/abs/2210.03115) (**SimPer**)| ICLR 2023 Oral | [github](https://github.com/yyzharry/simper)|
 |[**Facial Video-based Remote Physiological Measurement via Self-supervised Learning**](https://arxiv.org/abs/2210.15401) | IEEE TPAMI 2023 | [github](https://github.com/yuezijie/video-based-remote-physiological-measurement-via-self-supervised-learning)|
+|[**Contactless Pulse Estimation Leveraging Pseudo Labels and Self-Supervision**](https://doi.org/10.1109/ICCV51070.2023.01882) | ICCV 2023 | -|
 |[**Contrast-Phys: Unsupervised Video-Based Remote Physiological Measurement via Spatiotemporal Contrast**](https://link.springer.com/chapter/10.1007/978-3-031-19775-8_29)(**Contrast-Phys**) | ECCV 2022 | [github](https://github.com/zhaodongsun/contrast-phys)|
 |[**Self-Supervised RGB-NIR Fusion Video Vision Transformer Framework for rPPG Estimation**](https://ieeexplore.ieee.org/abstract/document/9931758)| IEEE TIM 2022 | -|
 |[**Self-supervised Representation Learning Framework for Remote Physiological Measurement Using Spatiotemporal Augmentation Loss**](https://arxiv.org/abs/2107.07695)(**SLF-RPM**)| AAAI  2022 | [github](https://github.com/Dylan-H-Wang/SLF-RPM)|
 |[**The Way to my Heart is through Contrastive Learning: Remote Photoplethysmography from Unlabelled Video**](https://arxiv.org/abs/2111.09748)| ICCV  2021 | [github](https://github.com/ToyotaResearchInstitute/RemotePPG)|
+
+
+### Multimodal
+
+|  Title  |   Publication  |  Code   |
+|:--------|:--------:|:--------:|
+|[**CardiacMamba: A Multimodal RGB-RF Fusion Framework with State Space Models for Remote Physiological Measurement**](http://arxiv.org/abs/2502.13624) (**CardiacMamba**)| arXiv 2025 | [github](https://github.com/WuZheng42/CardiacMamba)|
+|[**Spatial Alignment and Temporal Matching Adapter for Video-Radar Remote Physiological Measurement**](https://openaccess.thecvf.com/content/ICCV2025/papers/Liang_Spatial_Alignment_and_Temporal_Matching_Adapter_for_Video-Radar_Remote_Physiological_ICCV_2025_paper.pdf) (**SATM**)| ICCV 2025 | -|
+|[**FusionPhys: A Flexible Framework for Fusing Complementary Sensing Modalities in Remote Physiological Measurement**](https://openaccess.thecvf.com/content/ICCV2025/papers/Ying_FusionPhys_A_Flexible_Framework_for_Fusing_Complementary_Sensing_Modalities_in_ICCV_2025_paper.pdf) (**FusionPhys**)| ICCV 2025 | [github](https://github.com/ChH-Ying/FusonPhys)|
+|[**Fusion-Vital: Video-RF Fusion Transformer for Advanced Remote Physiological Measurement**](https://ojs.aaai.org/index.php/AAAI/article/view/27898) (**Fusion-Vital**)| AAAI 2024 | -|
+|[**Blending Camera and 77 GHz Radar Sensing for Equitable, Robust Plethysmography**](https://dl.acm.org/doi/10.1145/3528223.3530161) | ACM TOG 2022 | -|
 
 
 ### Other Methods
