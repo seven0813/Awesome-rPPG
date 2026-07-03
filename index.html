@@ -3,578 +3,381 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Awesome rPPG Method List</title>
+  <title>Awesome-rPPG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;620;650;720;760;820&display=swap" rel="stylesheet">
   <style>
     :root {
-      color-scheme: light;
-      --bg: #f7f8f5;
+      color-scheme: light dark;
       --surface: #ffffff;
-      --surface-strong: #eef3ef;
-      --ink: #18211f;
-      --muted: #63716c;
-      --line: #dce4df;
-      --accent: #116c63;
-      --accent-strong: #0c4c46;
-      --pulse: #c83f4f;
-      --amber: #bf7a1f;
-      --shadow: 0 18px 50px rgba(24, 33, 31, 0.10);
-      --radius: 8px;
+      --surface-strong: #eef3f0;
+      --ink: #141b1a;
+      --ink-soft: #2d3a37;
+      --muted: #5d6d68;
+      --muted-light: #8a9b95;
+      --line: #dce4e0;
+      --accent: #0d7a6e;
+      --accent-soft: rgba(13, 122, 110, 0.10);
+      --accent-strong: #08554c;
+      --pulse: #d43f52;
+      --pulse-soft: rgba(212, 63, 82, 0.12);
+      --amber: #b87a1f;
+      --code-bg: #e6f0ed;
+      --shadow-sm: 0 4px 12px rgba(20, 27, 26, 0.07);
+      --shadow-md: 0 10px 28px rgba(20, 27, 26, 0.08);
+      --shadow-lg: 0 18px 50px rgba(20, 27, 26, 0.10);
+      --radius: 10px;
+      --radius-sm: 6px;
     }
 
-    * {
-      box-sizing: border-box;
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #101514;
+        --bg-grid: #1a211f;
+        --surface: #1c2321;
+        --surface-strong: #26302d;
+        --ink: #e3eae7;
+        --ink-soft: #c2cdc9;
+        --muted: #869994;
+        --muted-light: #657a74;
+        --line: #2d3a37;
+        --line-light: #25302d;
+        --accent: #1ab5a3;
+        --accent-soft: rgba(26, 181, 163, 0.12);
+        --accent-strong: #2cd4c0;
+        --pulse: #f06072;
+        --pulse-soft: rgba(240, 96, 114, 0.15);
+        --code-bg: #1a2e29;
+        --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
+        --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.30);
+        --shadow-lg: 0 18px 50px rgba(0, 0, 0, 0.35);
+      }
     }
+
+    * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
+      scroll-padding-top: 86px;
     }
 
     body {
       margin: 0;
       color: var(--ink);
       background:
-        linear-gradient(90deg, rgba(17, 108, 99, 0.045) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(17, 108, 99, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px),
+        linear-gradient(0deg, var(--bg-grid) 1px, transparent 1px),
         var(--bg);
-      background-size: 36px 36px;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.5;
+      background-size: 40px 40px;
+      font-family: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.55;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      color: var(--accent-strong);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { color: var(--accent-strong); text-decoration: underline; text-underline-offset: 3px; }
 
     .skip-link {
-      position: absolute;
-      left: 16px;
-      top: -48px;
-      z-index: 20;
-      padding: 10px 14px;
-      color: #fff;
-      background: var(--accent-strong);
-      border-radius: 6px;
+      position: absolute; left: 16px; top: -48px; z-index: 20;
+      padding: 10px 16px; color: #fff; background: var(--accent-strong);
+      border-radius: var(--radius-sm); font-weight: 650;
     }
-
-    .skip-link:focus {
-      top: 16px;
-    }
+    .skip-link:focus { top: 16px; }
 
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      border-bottom: 1px solid rgba(220, 228, 223, 0.88);
-      background: rgba(247, 248, 245, 0.92);
-      backdrop-filter: blur(14px);
+      position: sticky; top: 0; z-index: 100;
+      border-bottom: 1px solid var(--line-light);
+      background: rgba(244, 246, 248, 0.88);
+      backdrop-filter: blur(16px) saturate(1.4);
+    }
+    @media (prefers-color-scheme: dark) {
+      .site-header { background: rgba(16, 21, 20, 0.90); }
     }
 
     .topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 12px 0;
+      display: flex; align-items: center; gap: 16px;
+      width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 10px 0;
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      min-width: 0;
-      font-weight: 760;
-      letter-spacing: 0;
-      color: var(--ink);
-      white-space: nowrap;
+      display: flex; align-items: center; gap: 10px;
+      flex: 0 0 auto; font-weight: 760; font-size: 17px;
+      color: var(--ink); white-space: nowrap; letter-spacing: -0.01em;
     }
-
-    .mark {
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(17, 108, 99, 0.3);
-      border-radius: 8px;
-      display: grid;
-      place-items: center;
-      background: #fff;
-      box-shadow: 0 8px 20px rgba(17, 108, 99, 0.12);
-    }
-
-    .mark span {
-      width: 20px;
-      height: 12px;
-      display: block;
-      border-bottom: 3px solid var(--pulse);
-      border-left: 3px solid transparent;
-      border-radius: 50%;
-      transform: rotate(-8deg);
-    }
-
     .top-nav {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
-      overflow-x: auto;
-      scrollbar-width: none;
+      display: flex; align-items: center; gap: 2px;
+      flex: 1; min-width: 0; overflow-x: auto;
+      scrollbar-width: none; -ms-overflow-style: none;
     }
-
-    .top-nav::-webkit-scrollbar {
-      display: none;
-    }
-
+    .top-nav::-webkit-scrollbar { display: none; }
     .top-nav a {
-      flex: 0 0 auto;
-      padding: 8px 10px;
-      border-radius: 6px;
-      color: #394844;
-      font-size: 13px;
-      font-weight: 650;
+      flex: 0 0 auto; padding: 7px 10px; border-radius: var(--radius-sm);
+      color: var(--muted); font-size: 13px; font-weight: 650;
+      transition: background .15s, color .15s;
     }
+    .top-nav a:hover { background: var(--surface-strong); color: var(--ink); text-decoration: none; }
 
-    .top-nav a:hover {
-      background: var(--surface-strong);
-      text-decoration: none;
+    .Github-button {
+      flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px;
+      min-height: 32px; padding: 6px 12px;
+      border: 1px solid var(--accent); border-radius: 8px;
+      background: var(--accent); color: #fff;
+      font-size: 12px; font-weight: 760; white-space: nowrap;
+      box-shadow: 0 6px 16px rgba(13, 122, 110, 0.18);
+      transition: background .15s, transform .15s;
     }
+    .Github-button:hover { background: var(--accent-strong); color: #fff; text-decoration: none; transform: translateY(-1px); }
 
     .hero {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto;
-      padding: 56px 0 34px;
+      width: min(1180px, calc(100% - 32px)); margin: 0 auto; padding: 48px 0 32px;
     }
-
     .hero-panel {
-      position: relative;
-      overflow: hidden;
-      max-width: 100%;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
+      position: relative; overflow: hidden; max-width: 100%;
+      border: 1px solid var(--line); border-radius: var(--radius);
       background:
-        radial-gradient(circle at 82% 24%, rgba(200, 63, 79, 0.16), transparent 24%),
-        linear-gradient(135deg, #ffffff 0%, #f1f6f2 58%, #f6efe6 100%);
-      box-shadow: var(--shadow);
+        radial-gradient(ellipse at 80% 20%, var(--pulse-soft) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 80%, var(--accent-soft) 0%, transparent 50%),
+        linear-gradient(135deg, var(--surface) 0%, #f0f7f3 50%, #f7f0ea 100%);
+      box-shadow: var(--shadow-lg);
+    }
+    @media (prefers-color-scheme: dark) {
+      .hero-panel {
+        background:
+          radial-gradient(ellipse at 80% 20%, var(--pulse-soft) 0%, transparent 50%),
+          radial-gradient(ellipse at 20% 80%, var(--accent-soft) 0%, transparent 50%),
+          linear-gradient(135deg, var(--surface) 0%, #16231e 50%, #1e1917 100%);
+      }
     }
 
     .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
-      gap: 32px;
-      min-height: 390px;
-      padding: clamp(28px, 5vw, 58px);
-      align-items: center;
+      display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr);
+      gap: 32px; min-height: 370px;
+      padding: clamp(28px, 5vw, 56px); align-items: center;
     }
-
-    .hero-grid > * {
-      min-width: 0;
-    }
+    .hero-grid > * { min-width: 0; }
 
     .kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin: 0 0 18px;
-      padding: 6px 10px;
-      width: fit-content;
-      border: 1px solid rgba(17, 108, 99, 0.22);
+      display: inline-flex; align-items: center; gap: 8px;
+      margin: 0 0 16px; padding: 6px 12px; width: fit-content;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.72);
-      color: var(--accent-strong);
-      font-size: 13px;
-      font-weight: 720;
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(13, 122, 110, 0.2);
+      color: var(--accent-strong); font-size: 13px; font-weight: 720;
     }
 
     h1 {
-      margin: 0;
-      max-width: 780px;
-      font-size: clamp(38px, 7vw, 78px);
-      line-height: 0.96;
-      letter-spacing: 0;
-      overflow-wrap: anywhere;
+      margin: 0; max-width: 720px;
+      font-size: clamp(36px, 6.5vw, 72px);
+      line-height: 0.94; letter-spacing: -0.02em;
+      overflow-wrap: anywhere; color: var(--ink);
     }
 
     .intro {
-      max-width: 760px;
-      margin: 22px 0 0;
-      color: #465550;
-      font-size: clamp(16px, 2.3vw, 20px);
-      overflow-wrap: anywhere;
+      max-width: 700px; margin: 20px 0 0;
+      color: var(--muted); font-size: clamp(15px, 2vw, 18px);
+      overflow-wrap: anywhere; line-height: 1.6;
     }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 28px;
-    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 
     .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      padding: 10px 14px;
-      border-radius: 7px;
-      border: 1px solid var(--line);
-      background: #fff;
-      color: var(--ink);
-      font-weight: 720;
-      box-shadow: 0 8px 20px rgba(24, 33, 31, 0.07);
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 44px; padding: 10px 18px; border-radius: 9px;
+      border: 1px solid var(--line); background: var(--surface);
+      color: var(--ink); font-size: 14px; font-weight: 720;
+      box-shadow: var(--shadow-sm); transition: transform .15s, box-shadow .15s;
     }
-
-    .button.primary {
-      border-color: var(--accent);
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .button:hover {
-      text-decoration: none;
-      transform: translateY(-1px);
-    }
+    .button.primary { border-color: var(--accent); background: var(--accent); color: #fff; }
+    .button:hover { text-decoration: none; transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
     .signal-board {
-      align-self: stretch;
-      display: grid;
-      align-content: center;
-      gap: 18px;
-      min-width: 0;
-      min-height: 260px;
-      padding: 24px;
-      border: 1px solid rgba(17, 108, 99, 0.18);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.62);
+      align-self: stretch; display: grid; align-content: center; gap: 16px;
+      min-width: 0; min-height: 240px; padding: 22px;
+      border: 1px solid rgba(13, 122, 110, 0.15); border-radius: var(--radius);
+      background: rgba(255,255,255,0.55);
+    }
+    @media (prefers-color-scheme: dark) {
+      .signal-board { background: rgba(28, 35, 33, 0.6); }
     }
 
     .wave {
-      width: 100%;
-      min-width: 0;
-      height: 122px;
-      border-radius: 8px;
-      border: 1px solid rgba(99, 113, 108, 0.2);
+      width: 100%; min-width: 0; height: 110px;
+      border-radius: 8px; border: 1px solid var(--line-light);
       background:
-        linear-gradient(90deg, rgba(99, 113, 108, 0.13) 1px, transparent 1px),
-        linear-gradient(0deg, rgba(99, 113, 108, 0.13) 1px, transparent 1px),
-        #ffffff;
-      background-size: 22px 22px;
-      overflow: hidden;
+        linear-gradient(90deg, var(--bg-grid) 1px, transparent 1px),
+        linear-gradient(0deg, var(--bg-grid) 1px, transparent 1px),
+        var(--surface);
+      background-size: 20px 20px; overflow: hidden;
     }
-
-    .wave svg {
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
+    .wave svg { width: 100%; height: 100%; display: block; }
 
     .metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
     }
-
     .metric {
-      min-width: 0;
-      padding: 12px;
-      border: 1px solid rgba(220, 228, 223, 0.9);
-      border-radius: 7px;
-      background: #fff;
+      min-width: 0; padding: 12px 14px;
+      border: 1px solid var(--line-light); border-radius: 8px;
+      background: var(--surface);
     }
-
-    .metric strong {
-      display: block;
-      font-size: 24px;
-      line-height: 1;
-    }
-
-    .metric span {
-      display: block;
-      margin-top: 5px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 650;
-    }
+    .metric strong { display: block; font-size: 26px; line-height: 1; color: var(--accent); }
+    .metric span { display: block; margin-top: 4px; color: var(--muted); font-size: 12px; font-weight: 650; }
 
     .layout {
-      display: grid;
-      grid-template-columns: 230px minmax(0, 1fr);
-      gap: 28px;
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto 64px;
-      align-items: start;
+      display: grid; grid-template-columns: 210px minmax(0, 1fr);
+      gap: 28px; width: min(1180px, calc(100% - 32px)); margin: 0 auto 56px; align-items: start;
     }
 
     .sidebar {
-      position: sticky;
-      top: 78px;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.82);
-      box-shadow: 0 10px 26px rgba(24, 33, 31, 0.06);
+      position: sticky; top: 80px; padding: 14px;
+      border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--surface); box-shadow: var(--shadow-sm);
     }
-
     .sidebar-title {
-      margin: 0 0 10px;
-      color: var(--muted);
-      font-size: 12px;
-      font-weight: 760;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      margin: 0 0 10px; color: var(--muted); font-size: 11px; font-weight: 760;
+      text-transform: uppercase; letter-spacing: 0.1em;
     }
-
-    .side-nav {
-      display: grid;
-      gap: 4px;
-    }
-
+    .side-nav { display: grid; gap: 3px; }
     .side-nav a {
-      display: block;
-      padding: 8px 9px;
-      border-radius: 6px;
-      color: #35433f;
-      font-size: 14px;
-      font-weight: 650;
+      display: block; padding: 7px 10px; border-radius: var(--radius-sm);
+      color: var(--muted); font-size: 14px; font-weight: 620;
+      transition: background .15s, color .15s;
     }
+    .side-nav a:hover { background: var(--surface-strong); color: var(--ink); text-decoration: none; }
 
-    .side-nav a:hover {
-      background: var(--surface-strong);
-      text-decoration: none;
-    }
-
-    .content {
-      display: grid;
-      gap: 22px;
-      min-width: 0;
-      max-width: 100%;
-      overflow: hidden;
-    }
+    .content { display: grid; gap: 22px; min-width: 0; max-width: 100%; overflow: hidden; }
 
     .toolbar {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      min-width: 0;
-      padding: 12px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.88);
-      box-shadow: 0 10px 26px rgba(24, 33, 31, 0.05);
+      display: flex; align-items: center; gap: 12px; min-width: 0;
+      padding: 14px 18px;
+      border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--surface); box-shadow: var(--shadow-sm);
     }
-
     .search {
-      width: 100%;
-      min-height: 44px;
-      border: 1px solid var(--line);
-      border-radius: 7px;
-      padding: 10px 12px;
-      color: var(--ink);
-      background: #fff;
-      font: inherit;
+      width: 100%; min-height: 44px;
+      border: 1px solid var(--line); border-radius: 8px;
+      padding: 10px 14px; color: var(--ink); background: var(--surface);
+      font: inherit; font-size: 14px; transition: border-color .15s, box-shadow .15s;
     }
-
-    .search:focus {
-      outline: 3px solid rgba(17, 108, 99, 0.18);
-      border-color: var(--accent);
-    }
-
+    .search:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
     .count-pill {
-      flex: 0 0 auto;
-      padding: 10px 12px;
-      border-radius: 7px;
-      background: var(--surface-strong);
-      color: var(--accent-strong);
-      font-size: 13px;
-      font-weight: 760;
+      flex: 0 0 auto; padding: 8px 14px; border-radius: 8px;
+      background: var(--accent-soft); color: var(--accent-strong);
+      font-size: 13px; font-weight: 760; white-space: nowrap;
     }
 
     .section {
-      scroll-margin-top: 86px;
-      min-width: 0;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 12px 32px rgba(24, 33, 31, 0.07);
-      overflow: hidden;
+      scroll-margin-top: 86px; min-width: 0;
+      border: 1px solid var(--line); border-radius: var(--radius);
+      background: var(--surface); box-shadow: var(--shadow-sm);
+      overflow: hidden; transition: box-shadow .2s;
     }
+    .section:hover { box-shadow: var(--shadow-md); }
 
     .section-header {
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 22px 22px 16px;
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(180deg, #ffffff, #f8faf8);
+      display: flex; align-items: end; justify-content: space-between; gap: 16px;
+      padding: 20px 22px 14px;
+      border-bottom: 1px solid var(--line-light);
+      background: linear-gradient(180deg, var(--surface), color-mix(in srgb, var(--bg) 60%, var(--surface)));
     }
 
     h2 {
-      margin: 0;
-      font-size: clamp(22px, 3vw, 32px);
-      line-height: 1.1;
-      letter-spacing: 0;
+      margin: 0; font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.15; letter-spacing: -0.01em; color: var(--ink);
     }
 
     .section-count {
-      flex: 0 0 auto;
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 720;
+      flex: 0 0 auto; padding: 4px 12px; border-radius: 999px;
+      background: var(--accent-soft); color: var(--accent-strong);
+      font-size: 12px; font-weight: 760; white-space: nowrap;
     }
 
-    .table-wrap {
-      width: 100%;
-      max-width: 100%;
-      min-width: 0;
-      overflow-x: auto;
-    }
+    .table-wrap { width: 100%; max-width: 100%; min-width: 0; overflow-x: auto; }
 
-    table {
-      width: 100%;
-      min-width: 720px;
-      border-collapse: collapse;
-      background: #fff;
-    }
+    table { width: 100%; min-width: 720px; border-collapse: collapse; }
 
-    th,
-    td {
-      padding: 13px 16px;
-      border-bottom: 1px solid var(--line);
-      text-align: left;
-      vertical-align: top;
-      font-size: 14px;
+    th, td {
+      padding: 12px 16px; text-align: left; vertical-align: middle;
+      font-size: 14px; border-bottom: 1px solid var(--line-light);
     }
-
     th {
-      position: sticky;
-      top: 0;
-      z-index: 1;
-      background: #f2f6f3;
-      color: #43514d;
-      font-size: 12px;
-      font-weight: 820;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      position: sticky; top: 0; z-index: 1;
+      background: var(--surface-strong); color: var(--muted);
+      font-size: 11px; font-weight: 820; text-transform: uppercase; letter-spacing: 0.08em;
     }
+    td:first-child { width: 60%; font-weight: 620; color: var(--ink-soft); }
+    td:nth-child(2) { width: 20%; white-space: nowrap; color: var(--muted); }
+    td:nth-child(3) { width: 20%; white-space: nowrap; }
 
-    td:first-child {
-      width: 62%;
-      font-weight: 620;
-    }
+    tbody tr { transition: background .12s; }
+    tbody tr:not(.is-hidden):hover { background: var(--accent-soft); }
+    tbody tr:last-child td { border-bottom: 0; }
 
-    td:nth-child(2) {
-      width: 20%;
-      color: #4f5e59;
-      white-space: nowrap;
-    }
+    tr.is-hidden { display: none; }
 
-    td:nth-child(3) {
-      width: 18%;
-      white-space: nowrap;
-    }
-
-    tr:last-child td {
-      border-bottom: 0;
-    }
-
-    tr.is-hidden {
-      display: none;
-    }
+    td:first-child a { color: var(--ink-soft); transition: color .15s; }
+    td:first-child a:hover { color: var(--accent); }
 
     .empty-state {
-      display: none;
-      padding: 24px;
-      color: var(--muted);
-      border-top: 1px solid var(--line);
-      background: #fff;
+      display: none; padding: 32px 24px; text-align: center;
+      color: var(--muted); border-top: 1px solid var(--line-light); background: var(--surface);
+      font-size: 14px;
     }
+    .section.no-results .empty-state { display: block; }
 
-    .section.no-results .empty-state {
-      display: block;
-    }
-
-    .ack {
-      padding: 22px;
-    }
-
-    .ack ul {
-      margin: 0;
-      padding-left: 20px;
-    }
+    .ack { padding: 22px; }
+    .ack ul { margin: 0; padding-left: 20px; }
+    .ack li { margin-bottom: 4px; }
 
     .site-footer {
-      width: min(1180px, calc(100% - 32px));
-      margin: 0 auto 38px;
-      color: var(--muted);
-      font-size: 13px;
+      width: min(1180px, calc(100% - 32px)); margin: 0 auto 36px;
+      text-align: center;
+    }
+    .site-footer span {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 18px; border-radius: 999px;
+      background: var(--surface); border: 1px solid var(--line-light);
+      color: var(--muted-light); font-size: 12px; font-weight: 620;
+      box-shadow: var(--shadow-sm);
+    }
+    .site-footer span::before {
+      content: "";
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+      opacity: 0.6;
     }
 
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .section { animation: fadeUp .4s ease both; }
+    .section:nth-child(2) { animation-delay: .05s; }
+    .section:nth-child(3) { animation-delay: .1s; }
+    .section:nth-child(4) { animation-delay: .15s; }
+    .section:nth-child(5) { animation-delay: .2s; }
+    .section:nth-child(6) { animation-delay: .25s; }
+    .section:nth-child(7) { animation-delay: .3s; }
+    .section:nth-child(8) { animation-delay: .35s; }
+
     @media (max-width: 900px) {
-      .topbar {
-        align-items: flex-start;
-        flex-direction: column;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .layout {
-        grid-template-columns: 1fr;
-      }
-
-      .sidebar {
-        position: static;
-      }
+      .topbar { align-items: flex-start; flex-direction: column; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
     }
 
     @media (max-width: 620px) {
-      .hero {
-        width: min(1180px, calc(100% - 20px));
-        padding-top: 26px;
-      }
-
-      .hero-grid {
-        padding: 22px;
-      }
-
-      .metrics {
-        grid-template-columns: 1fr;
-      }
-
-      .layout,
-      .site-footer,
-      .topbar {
-        width: min(1180px, calc(100% - 20px));
-      }
-
-      .signal-board {
-        padding: 16px;
-      }
-
-      .wave {
-        height: 104px;
-      }
-
-      .toolbar,
-      .section-header {
-        align-items: stretch;
-        flex-direction: column;
-      }
-
-      .count-pill,
-      .section-count {
-        width: fit-content;
-      }
+      .hero { width: min(1180px, calc(100% - 20px)); padding-top: 24px; }
+      .hero-grid { padding: 22px; min-height: auto; }
+      .metrics { grid-template-columns: 1fr; }
+      .layout, .site-footer, .topbar { width: min(1180px, calc(100% - 20px)); }
+      .signal-board { padding: 16px; }
+      .wave { height: 90px; }
+      .toolbar, .section-header { align-items: stretch; flex-direction: column; }
+      .count-pill, .section-count { width: fit-content; }
+      th, td { padding: 10px 12px; font-size: 13px; }
     }
   </style>
 </head>
@@ -583,7 +386,6 @@
   <header class="site-header">
     <div class="topbar">
       <a class="brand" href="#">
-        <span class="mark" aria-hidden="true"><span></span></span>
         <span>Awesome rPPG</span>
       </a>
       <nav class="top-nav" aria-label="Primary">
@@ -591,11 +393,14 @@
         <a href="#traditional-methods">Traditional</a>
         <a href="#supervised-learning">Supervised</a>
         <a href="#self-supervised-learning">Self-Supervised</a>
+        <a href="#dgdattta">DG/DA/TTA</a>
+        <a href="#data-synthesis">Data Synth.</a>
         <a href="#multimodal">Multimodal</a>
         <a href="#other-methods">Other</a>
         <a href="#benchmark">Benchmark</a>
         <a href="#dataset">Dataset</a>
       </nav>
+      <a class="Github-button" href="https://github.com/seven0813/Awesome-rPPG" target="_blank" rel="noopener noreferrer">Github</a>
     </div>
   </header>
 
@@ -605,7 +410,7 @@
         <div class="hero-grid">
           <div>
             <p class="kicker" id="updated-label">Last updated: 2026-07-02</p>
-            <h1 id="page-title">Awesome-rPPG-Method-List</h1>
+            <h1 id="page-title">Awesome-rPPG</h1>
             <p class="intro" id="intro-text"></p>
             <div class="hero-actions">
               <a class="button primary" href="#papers">Browse Papers</a>
@@ -649,168 +454,7 @@
     <span>Built from README.md content.</span>
   </footer>
 
-  <script type="text/plain" id="readme-source"># Awesome-rPPG-Method-List
-
-&gt; Last updated: 2026-07-02
-
-This repository is a collection of rPPG methods. I will update it gradually, if you have any suggestions or questions, please feel free to contact me. If you know any other methods, please create a issue or pull request. If you find this repository helpful, please give me a star.
-
-- [Awesome Papers](#Awesome-Papers)
-  - [Survey](#survey)
-  - [Traditional Methods](#traditional-methods)
-  - [Supervised Learning](#supervised-learning)
-  - [Self-Supervised Learning](#self-supervised-learning)
-  - [Other Methods](#other-methods)
-  - [Benchmark](#benchmark)
-  - [Dataset](#dataset)
-- [Acknowledgments](#acknowledgments)
-
-
-## Awesome Papers
-
-### Survey
-
-|  Title  |   Publication  |  Code   |
-|:--------|:--------:|:--------:|
-|[**Remote photoplethysmography for heart rate measurement: A review**](https://www.sciencedirect.com/science/article/abs/pii/S1746809423010418)| Biomedical Signal Processing and Control 2023 | - |
-|[**Camera Measurement of Physiological Vital Signs**](https://arxiv.org/pdf/2111.11547)| ACM Computing Surveys 2021 | - |
-|[**Video-Based Heart Rate Measurement: Recent Advances and Future Prospects**](https://ieeexplore.ieee.org/document/8552414) | TIM 2019 | - |
-
-
-### Traditional Methods
-
-|  Title  |   Publication  |  Code   |
-|:--------|:--------:|:--------:|
-|[**Face2PPG: An Unsupervised Pipeline for Blood Volume Pulse Extraction From Faces**](https://ieeexplore.ieee.org/document/10227326) (**OMIT**)| IEEE JBHI 2023| - |
-|[**Local Group Invariance for Heart Rate Estimation from Face Videos in the Wild**](https://openaccess.thecvf.com/content_cvpr_2018_workshops/papers/w27/Pilz_Local_Group_Invariance_CVPR_2018_paper.pdf) (**LGI**)| CVPR Workshop 2018 | - |
-|[**Algorithmic Principles of Remote PPG**](https://ieeexplore.ieee.org/document/7565547) (**POS**)| IEEE TBME 2016 | - |
-|[**A Novel Algorithm for Remote Photoplethysmography: Spatial Subspace Rotation**](https://ieeexplore.ieee.org/document/7355301) (**2SR**)| IEEE TBME 2015 | - |
-|[**Improved motion robustness of remote-PPG by using the blood volume pulse signature**](https://iopscience.iop.org/article/10.1088/0967-3334/35/9/1913) (**PBV**)| Physiological Measurement 2014 | - |
-|[**Robust Pulse Rate From Chrominance-Based rPPG**](https://ieeexplore.ieee.org/document/6523142) (**CHROM**)| IEEE TBME 2013 | - |
-|[**Measuring pulse rate with a webcam—a non-contact method for evaluating cardiac activity**](https://citeseerx.ist.psu.edu/document?repid=rep1&amp;type=pdf&amp;doi=7ad15b6fecdb9b2ad49be5bf26efafe22c9a8945) (**PCA**)| FedCSIS 2011 | - |
-|[**Remote plethysmographic imaging using ambient light**](https://pdfs.semanticscholar.org/7cb4/46d61a72f76e774b696515c55c92c7aa32b6.pdf?_gl=1*1q7hzyz*_ga*NTEzMzk5OTY3LjE2ODYxMDg1MjE.*_ga_H7P4ZT52H5*MTY4NjEwODUyMC4xLjAuMTY4NjEwODUyMS41OS4wLjA)| Optics Express 2008 | |
-
-
-### Supervised Learning
-
-|  Title  |   Publication  |  Code   |
-|:--------|:--------:|:--------:|
-|[**FactorizePhys: Matrix Factorization for Multidimensional Attention in Remote Physiological Sensing**](https://openreview.net/pdf?id=qrfp4eeZ47)(**FactorizePhys**) | NeurIPS 2024| [github](https://github.com/PhysiologicAILab/FactorizePhys) |
-|[**Dual-bridging with Adversarial Noise Generation for Domain Adaptive rPPG Estimation**](https://openaccess.thecvf.com/content/CVPR2023/papers/Du_Dual-Bridging_With_Adversarial_Noise_Generation_for_Domain_Adaptive_rPPG_Estimation_CVPR_2023_paper.pdf) | CVPR 2023| -|
-|[**PhysFormer++: Facial Video-Based Physiological Measurement with SlowFast Temporal Difference Transformer**](https://link.springer.com/article/10.1007/s11263-023-01758-1) (**PhysFormer++**)| IJCV 2023| -|
-|[**EfficientPhys: Enabling Simple, Fast and Accurate Camera-Based Cardiac Measurement**](https://openaccess.thecvf.com/content/WACV2023/papers/Liu_EfficientPhys_Enabling_Simple_Fast_and_Accurate_Camera-Based_Cardiac_Measurement_WACV_2023_paper.pdf) (**EfficientPhys**)| WACV 2023| [github](https://github.com/anonymous0paper/EfficientPhys)|
-|[**RADIANT: Better rPPG estimation using signal embeddings and Transformer**](https://openaccess.thecvf.com/content/WACV2023/papers/Gupta_RADIANT_Better_rPPG_Estimation_Using_Signal_Embeddings_and_Transformer_WACV_2023_paper.pdf) (**RADIANT**)| WACV 2023| [github](https://github.com/Deep-Intelligence-Lab/RADIANT)|
-|[**Augmentation of rPPG Benchmark Datasets: Learning to Remove and Embed rPPG Signals via Double Cycle Consistent Learning from Unpaired Facial Videos**](https://link.springer.com/chapter/10.1007/978-3-031-19787-1_21)(**RErPPGNet**) | ECCV 2022| [github](https://github.com/nthumplab/RErPPGNet) |
-|[**PhysFormer: Facial Video-based Physiological Measurement with Temporal Difference Transformer**](https://arxiv.org/pdf/2111.12082) (**PhysFormer**)| CVPR 2022| [github](https://github.com/ZitongYu/PhysFormer)|
-|[**ETA-rPPGNet: Effective Time-Domain Attention Network for Remote Heart Rate Measurement**](https://ieeexplore.ieee.org/abstract/document/9353569) (**ETA-rPPGNet**)| IEEE TIM 2021| - |
-|[**Deep Super-Resolution Network for rPPG Information Recovery and Noncontact Heart Rate Estimation**](https://ieeexplore.ieee.org/document/9529062) | IEEE TIM 2021| - |
-|[**Visual heart rate estimation with convolutional neural network**](https://www.sciencedirect.com/science/article/pii/S2096579620301121) (**NAS-HR**)| Virtual Reality &amp; Intelligent Hardware 2021| [github](https://github.com/LuPaoPao/NAS-HR) |
-|[**Dual-GAN: Joint BVP and Noise Modeling for Remote Physiological Measurement**](https://openaccess.thecvf.com/content/CVPR2021/papers/Lu_Dual-GAN_Joint_BVP_and_Noise_Modeling_for_Remote_Physiological_Measurement_CVPR_2021_paper.pdf) (**Dual-GAN**)| CVPR 2021| -|
-|[**PulseGAN: Learning to Generate Realistic Pulse Waveforms in Remote Photoplethysmography**](https://ieeexplore.ieee.org/document/9320513) (**PulseGAN**)| IEEE JBHI 2021| [github](https://github.com/miki998/PulseGAN)|
-|[**Deep-HR: Fast heart rate estimation from face video under realistic conditions**](https://www.sciencedirect.com/science/article/abs/pii/S0957417421009969) (**Deep-HR**)| Expert Systems with Applications 2021| [github](https://github.com/miki998/PulseGAN)|
-|[**Multi-Task Temporal Shift Attention Networks for On-Device Contactless Vitals Measurement**](https://arxiv.org/pdf/2006.03790) (**MTTS-CAN**)| NeurIPS 2020| [github](https://github.com/xliucs/MTTS-CAN) |
-|[**RhythmNet: End-to-End Heart Rate Estimation From Face via Spatial-Temporal Representation**](http://refhub.elsevier.com/S1746-8094(23)01041-8/sb47) (**RhythmNet**)| IEEE TIP 2020| [github](https://github.com/AnweshCR7/RhythmNet) |
-|[**Video-Based Remote Physiological Measurement via Cross-Verified Feature Disentangling**](http://refhub.elsevier.com/S1746-8094(23)01041-8/sb48) (**CVD**)| ECCV 2020 oral| [github](https://github.com/nxsEdson/CVD-Physiological-Measurement) |
-|[**Siamese-rPPG network: remote photoplethysmography signal estimation from face videos**](https://dl.acm.org/doi/abs/10.1145/3341105.3373905) (**Siamese-rPPG**)| ACM SAC 2020| - |
-|[**AutoHR: A Strong End-to-End Baseline for Remote Heart Rate Measurement With Neural Searching**](https://ieeexplore.ieee.org/document/9133501) (**AutoHR**)| IEEE SPL 2020| - |
-|[**HeartTrack: Convolutional neural network for remote video-based heart rate monitoring**](https://openaccess.thecvf.com/content_CVPRW_2020/papers/w19/Perepelkina_HeartTrack_Convolutional_Neural_Network_for_Remote_Video-Based_Heart_Rate_Monitoring_CVPRW_2020_paper.pdf) (**HeartTrack**)| CVPR Workshop 2020| - |
-|[**Meta-rPPG: Remote Heart Rate Estimation Using a Transductive Meta-learner**](https://link.springer.com/chapter/10.1007/978-3-030-58583-9_24) (**Meta-rPPG**)| ECCV 2020| [github](https://github.com/eugenelet/Meta-rPPG)|
-|[**Long short-term memory deep-filter in remote photoplethysmography**](https://openaccess.thecvf.com/content_CVPRW_2020/papers/w19/Botina-Monsalve_Long_Short-Term_Memory_Deep-Filter_In_Remote_Photoplethysmography_CVPRW_2020_paper.pdf) |CVPR Workshop 2020| -|
-|[**Remote Heart Rate Measurement from Highly Compressed Facial Videos: an End-to-end Deep Learning Solution with Video Enhancement**](https://openaccess.thecvf.com/content_ICCV_2019/papers/Yu_Remote_Heart_Rate_Measurement_From_Highly_Compressed_Facial_Videos_An_ICCV_2019_paper.pdf) (**rPPGNet**)| ICCV 2019| [github](https://github.com/ZitongYu/STVEN_rPPGNet) |
-|[**Remote Photoplethysmograph Signal Measurement from Facial Videos Using Spatio-Temporal Networks**](https://arxiv.org/abs/1905.02419) (**PhysNet**)| BMCV 2019| [github](https://github.com/ZitongYu/PhysNet) |
-|[**3D Convolutional Neural Networks for Remote Pulse Rate Measurement and Mapping from Facial Video**](https://www.mdpi.com/2076-3417/9/20/4364)(**rppg-3dcnn**) | Applied Science 2019| [github](https://github.com/frederic-bousefsaf/ippg-3dcnn) |
-|[**Vision-Based Heart Rate Estimation Via A Two-Stream CNN**](https://ieeexplore.ieee.org/document/8803649) |ICIP 2019| -|
-|[**An Accurate LSTM Based Video Heart Rate Estimation Method**](https://link.springer.com/chapter/10.1007/978-3-030-31726-3_35) |PRCV 2019| -|
-|[**SynRhythm: Learning a Deep Heart Rate Estimator from General to Specificn**](https://ieeexplore.ieee.org/document/8546321)(**SynRhythm**) | ICPR 2018| - |
-|[**EVM-CNN: Real-Time Contactless Heart Rate Estimation From Facial Video**](https://ieeexplore.ieee.org/abstract/document/8552438) (**EVM-CNN**)| IEEE TMM 2018| - |
-|[**DeepPhys: Video-Based Physiological Measurement Using Convolutional Attention Networks**](https://openaccess.thecvf.com/content_ECCV_2018/papers/Weixuan_Chen_DeepPhys_Video-Based_Physiological_ECCV_2018_paper.pdf) (**DeepPhys**)| ECCV 2018| [github](https://github.com/ubicomplab/rPPG-Toolbox) |
-|[**Visual heart rate estimation with convolutional neural network**](https://cmp.felk.cvut.cz/~spetlrad/ecg-fitness/visual-heart-rate.pdf) (**HR-CNN**)| BMVC 2018| [github](https://github.com/radimspetlik/hr-cnn) |
-|[**Instantaneous Physiological Estimation Using Video Transformers**](https://link.springer.com/chapter/10.1007/978-3-031-14771-5_22) (**instantaneous_transformer**)| -| [github](https://github.com/revanurambareesh/instantaneous_transformer)|
-
-### Self-Supervised Learning
-
-|  Title  |   Publication  |  Code   |
-|:--------|:--------:|:--------:|
-|[**rPPG-VQA: A Video Quality Assessment Framework for Unsupervised rPPG Training**](http://arxiv.org/abs/2604.11156) (**rPPG-VQA**)| CVPR 2026 | [github](https://github.com/Tianyang-Dai/rPPG-VQA)|
-|[**Style-rPPG: Exploration and Analysis of Style Transfer in Unsupervised Remote Physiological Measurement**](https://doi.org/10.1016/j.eswa.2024.126310) (**Style-rPPG**)| Expert Systems with Applications 2025 | -|
-|[**Semi-rPPG: Semi-Supervised Remote Physiological Measurement with Curriculum Pseudo-Labeling**](http://arxiv.org/abs/2502.03855) (**Semi-rPPG**)| IEEE TIM 2025 | -|
-|[**rPPG-NDCL: Unsupervised Remote Physiological Measurement Via Noise-Disentangled Contrastive Learning**](https://doi.org/10.1109/ICIP55913.2025.11084290) (**rPPG-NDCL**)| ICIP 2025 | [github](https://github.com/Tianyang-Dai/rPPG-NDCL)|
-|[**Contrast-Phys+: Unsupervised and Weakly-Supervised Video-Based Remote Physiological Measurement via Spatiotemporal Contrast**](https://doi.org/10.1109/TPAMI.2024.3367910) (**Contrast-Phys+**)| IEEE TPAMI 2024 | -|
-|[**RS-rPPG: Robust Self-Supervised Learning for rPPG**](https://brosdocs.net/fg2024/013.pdf) (**RS-rPPG**)| IEEE FG 2024 | [github](https://github.com/marukosan93/RS-rPPG)|
-|[**SiNC+: Adaptive Camera-Based Vitals with Unsupervised Learning of Periodic Signals**](http://arxiv.org/abs/2404.13449) (**SiNC+**)| arXiv 2024 | -|
-|[**Self-Similarity Prior Distillation for Unsupervised Remote Physiological Measurement**](https://doi.org/10.1109/TMM.2024.3405720) (**SSPD**)| IEEE TMM 2024 | -|
-|[**rPPG-MAE: Self-supervised Pre-training with Masked Autoencoders for Remote Physiological Measurement**](https://arxiv.org/abs/2306.02301) (**rPPG-MAE**)| arXiv 2023 | [github](https://github.com/keke-nice/rPPG-MAE)|
-|[**Non-Contrastive Unsupervised Learning of Physiological Signals from Video**](https://openaccess.thecvf.com/content/CVPR2023/papers/Speth_Non-Contrastive_Unsupervised_Learning_of_Physiological_Signals_From_Video_CVPR_2023_paper.pdf) (**SiNC-rPPG**)| CVPR 2023 Highlight | [github](https://github.com/CVRL/SiNC-rPPG)|
-|[**SimPer: Simple Self-Supervised Learning of Periodic Targets**](https://arxiv.org/abs/2210.03115) (**SimPer**)| ICLR 2023 Oral | [github](https://github.com/yyzharry/simper)|
-|[**Neuron Structure Modeling for Generalizable Remote Physiological Measurement**](http://arxiv.org/abs/2303.05955) (**NEST**)| CVPR 2023 | -|
-|[**Facial Video-based Remote Physiological Measurement via Self-supervised Learning**](https://arxiv.org/abs/2210.15401) | IEEE TPAMI 2023 | [github](https://github.com/yuezijie/video-based-remote-physiological-measurement-via-self-supervised-learning)|
-|[**Contactless Pulse Estimation Leveraging Pseudo Labels and Self-Supervision**](https://doi.org/10.1109/ICCV51070.2023.01882) | ICCV 2023 | -|
-|[**Contrast-Phys: Unsupervised Video-Based Remote Physiological Measurement via Spatiotemporal Contrast**](https://link.springer.com/chapter/10.1007/978-3-031-19775-8_29)(**Contrast-Phys**) | ECCV 2022 | [github](https://github.com/zhaodongsun/contrast-phys)|
-|[**Self-Supervised RGB-NIR Fusion Video Vision Transformer Framework for rPPG Estimation**](https://ieeexplore.ieee.org/abstract/document/9931758)| IEEE TIM 2022 | -|
-|[**Self-supervised Representation Learning Framework for Remote Physiological Measurement Using Spatiotemporal Augmentation Loss**](https://arxiv.org/abs/2107.07695)(**SLF-RPM**)| AAAI  2022 | [github](https://github.com/Dylan-H-Wang/SLF-RPM)|
-|[**The Way to my Heart is through Contrastive Learning: Remote Photoplethysmography from Unlabelled Video**](https://arxiv.org/abs/2111.09748)| ICCV  2021 | [github](https://github.com/ToyotaResearchInstitute/RemotePPG)|
-
-
-### Multimodal
-
-|  Title  |   Publication  |  Code   |
-|:--------|:--------:|:--------:|
-|[**CardiacMamba: A Multimodal RGB-RF Fusion Framework with State Space Models for Remote Physiological Measurement**](http://arxiv.org/abs/2502.13624) (**CardiacMamba**)| arXiv 2025 | [github](https://github.com/WuZheng42/CardiacMamba)|
-|[**Spatial Alignment and Temporal Matching Adapter for Video-Radar Remote Physiological Measurement**](https://openaccess.thecvf.com/content/ICCV2025/papers/Liang_Spatial_Alignment_and_Temporal_Matching_Adapter_for_Video-Radar_Remote_Physiological_ICCV_2025_paper.pdf) (**SATM**)| ICCV 2025 | -|
-|[**FusionPhys: A Flexible Framework for Fusing Complementary Sensing Modalities in Remote Physiological Measurement**](https://openaccess.thecvf.com/content/ICCV2025/papers/Ying_FusionPhys_A_Flexible_Framework_for_Fusing_Complementary_Sensing_Modalities_in_ICCV_2025_paper.pdf) (**FusionPhys**)| ICCV 2025 | [github](https://github.com/chh-ying/fusionphys)|
-|[**Fusion-Vital: Video-RF Fusion Transformer for Advanced Remote Physiological Measurement**](https://ojs.aaai.org/index.php/AAAI/article/view/27898) (**Fusion-Vital**)| AAAI 2024 | -|
-|[**Blending Camera and 77 GHz Radar Sensing for Equitable, Robust Plethysmography**](https://dl.acm.org/doi/10.1145/3528223.3530161) | ACM TOG 2022 | -|
-
-
-### Other Methods
-
-|  Title  |   Publication  |  Code   |
-|:--------|:--------:|:--------:|
-|[**Continual Learning for Remote Physiological Measurement: Minimize Forgetting and Simplify Inference**](https://arxiv.org/abs/2407.13974) | ECCV 2024| [github](https://github.com/mayyoy/rppgdil) |
-|[**Bi-TTA: Bidirectional Test-Time Adapter for Remote Physiological Measurement**](https://www.ecva.net/papers/eccv_2024/papers_ECCV/papers/01774.pdf)(**Bi-TTA**) | ECCV 2024| - |
-|[**Resolve Domain Conflicts for Generalizable Remote Physiological Measurement**](https://dl.acm.org/doi/10.1145/3581783.3612265) (**DOHA-rPPG**)| ACM MM 2023| [github](https://github.com/swy666/rppg-doha) |
-
-
-### Benchmark
-
-|  Title  |   Publication  |  Code   |
-|:--------|:--------:|:--------:|
-|[**rPPG-Toolbox: Deep Remote PPG Toolbox**](https://arxiv.org/abs/2210.00716) (**rPPG-Toolbox**)| NeurIPS 2023 | [github](https://github.com/ubicomplab/rPPG-Toolbox)|
-|[**Remote Bio-Sensing: Open Source Benchmark Framework for Fair Evaluation of rPPG**](https://arxiv.org/abs/2307.12644) | arXiv 2023 | [github](https://github.com/remotebiosensing/rppg)|
-|[**pyVHR: a Python framework for remote photoplethysmography**](https://pubmed.ncbi.nlm.nih.gov/35494872/)(**pyVHR**) | Computer Science 2022 | [github](https://github.com/phuselab/pyVHR)|
-|[**Evaluation of biases in remote photoplethysmography methods**](https://www.nature.com/articles/s41746-021-00462-z)(matlab) | npj Digital Medicine 2021 | [github](https://github.com/partofthestars/PPGI-Toolbox)|
-|[**iPhys: An Open Non-Contact Imaging-Based Physiological Measurement Toolbox**](https://arxiv.org/pdf/1901.04366)(matlab) | arXiv, 2019 | [github](https://github.com/danmcduff/iphys-toolbox)|
-
-
-### Dataset
-
-|  Title  |   Publication  |  Url   |
-|:--------|:--------:|:--------:|
-|[**iBVP Dataset: RGB-Thermal rPPG Dataset with High Resolution Signal Quality Labels**](https://doi.org/10.3390/electronics13071334)(**iBVP**) | Electronics 2024 | [download](https://github.com/PhysiologicAILab/iBVP-Dataset)|
-|[**ReactioNet: Learning High-order Facial Behavior from Universal Stimulus-Reaction by Dyadic Relation Reasoning**](https://openaccess.thecvf.com/content/ICCV2023/papers/Li_ReactioNet_Learning_High-Order_Facial_Behavior_from_Universal_Stimulus-Reaction_by_Dyadic_ICCV_2023_paper.pdf)(**BP4D+**) | ICCV 2023 | [download](https://www.cs.binghamton.edu/~lijun/Research/3DFE/3DFE_Analysis.html)|
-[**MMPD: Multi-Domain Mobile Video Physiology Dataset**](https://arxiv.org/pdf/2302.03840)(**MMPD**) | EMBC 2023 | [download](https://github.com/McJackTang/MMPD_rPPG_dataset?tab=readme-ov-file)|
-|[**SCAMPS: Synthetics for Camera Measurement of Physiological Signals**](https://proceedings.neurips.cc/paper_files/paper/2022/file/1838feeb71c4b4ea524d0df2f7074245-Paper-Datasets_and_Benchmarks.pdf)(**SCAMPS**) | NeurIPS 2022 | [download](https://github.com/danmcduff/scampsdataset)|
-|[**Synthetic Generation of Face Videos with Plethysmograph Physiology**](https://openaccess.thecvf.com/content/CVPR2022/papers/Wang_Synthetic_Generation_of_Face_Videos_With_Plethysmograph_Physiology_CVPR_2022_paper.pdf) (**UCLA-rPPG**) | CVPR 2022 | [download](http://visual.ee.ucla.edu/rppg_avatars.htm/)|
-|[**Deception Detection and Remote Physiological Monitoring: A Dataset and Baseline Experimental Results**](https://arxiv.org/pdf/2106.06583) (**DDPM**) | IEEE TBIOM 2021 | [download](https://cvrl.nd.edu/projects/data/#deception-detection-and-%20physiological-monitoringddpm)|
-|[**UBFC-Phys: A Multimodal Database For Psychophysiological Studies Of Social Stress**](https://ieeexplore.ieee.org/document/9346017) (**UBFC-Phys**) | IEEE TAFFC 2021 | [download](https://sites.google.com/view/ybenezeth/ubfc-phys)|
-|[**VIPL-HR: A Multi-modal Database for Pulse Estimation from Less-constrained Face Video**](https://arxiv.org/pdf/1810.04927v2) (**VIPL-HR**) | ACCV 2018 | [download](http://vipl.ict.ac.cn/database.php)|
-|[**A Reproducible Study on Remote Heart Rate Measurement**](https://arxiv.org/pdf/1709.00962) (**COHFACE**) | arXiv 2017 | [download](https://www.idiap.ch/en/scientific-research/data/cohface)|
-|[**Unsupervised skin tissue segmentation for remote photoplethysmography**](https://www.sciencedirect.com/science/article/pii/S0167865517303860) (**UBFC-rPPG**) | Pattern Recognition Letters 2017 | [download](https://sites.google.com/view/ybenezeth/ubfcrppg)|
-|[**Multimodal Spontaneous Emotion Corpus for Human Behavior Analysis**](https://openaccess.thecvf.com/content_cvpr_2016/papers/Zhang_Multimodal_Spontaneous_Emotion_CVPR_2016_paper.pdf) (**MMSE-HR**) | CVPR 2016 | [download](https://binghamton.technologypublisher.com/tech/MMSE-HR_dataset_(Multimodal_Spontaneous_Expression-Heart_Rate_dataset))|
-|[**Non-contact Video-based Pulse Rate Measurement on a Mobile Service Robot**](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6926392) (**PURE**) |  2014 | [download](https://www.tu-ilmenau.de/universitaet/fakultaeten/fakultaet-informatik-und-automatisierung/profil/institute-und-fachgebiete/institut-fuer-technische-informatik-und-ingenieurinformatik/fachgebiet-neuroinformatik-und-kognitive-robotik/data-sets-code/pulse-rate-detection-dataset-pure)|
-|[**DEAP: A Database for Emotion Analysis Using Physiological Signals**](https://ieeexplore.ieee.org/document/5871728) (**DEAP**) | IEEE TAFFC 2011 | [download](https://www.eecs.qmul.ac.uk/mmv/datasets/deap/)|
-
-
-
-
-## Acknowledgments
-
-- https://github.com/zx-pan/Awesome-rPPG</script>
-
   <script>
-    const source = document.getElementById("readme-source").textContent
-      .replaceAll("&gt;", ">")
-      .replaceAll("&amp;", "&");
 
     const slug = (text) => text.toLowerCase().trim().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-");
     const escapeHtml = (text) => text
@@ -942,47 +586,70 @@ This repository is a collection of rPPG methods. I will update it gradually, if 
       `;
     }
 
-    const data = parseReadme(source);
-    const totalRows = data.sections.reduce((sum, section) => sum + section.rows.length, 0);
-    const codeLinks = data.sections.reduce((sum, section) => {
-      return sum + section.rows.filter((row) => /github|download/i.test(row[2] || "")).length;
-    }, 0);
+    async function loadReadme() {
+      const response = await fetch("README.md", { cache: "no-cache" });
+      if (!response.ok) {
+        throw new Error("README.md request failed with status " + response.status);
+      }
+      return response.text();
+    }
 
-    document.title = data.title;
-    document.getElementById("page-title").textContent = data.title;
-    document.getElementById("updated-label").textContent = data.updated;
-    document.getElementById("intro-text").textContent = data.intro;
-    document.getElementById("paper-count").textContent = totalRows;
-    document.getElementById("section-count").textContent = data.sections.length;
-    document.getElementById("code-count").textContent = codeLinks;
-    document.getElementById("visible-count").textContent = `${totalRows} shown`;
-    document.getElementById("sections").innerHTML = data.sections.map(renderSection).join("") + renderAcknowledgments(data.acknowledgments);
-    document.getElementById("side-nav").innerHTML = data.sections.map((section) => {
-      return `<a href="#${slug(section.title)}">${escapeHtml(section.title)}</a>`;
-    }).join("") + `<a href="#acknowledgments">Acknowledgments</a>`;
+    function renderPage(source) {
+      const data = parseReadme(source);
+      const totalRows = data.sections.reduce((sum, section) => sum + section.rows.length, 0);
+      const codeLinks = data.sections.reduce((sum, section) => {
+        return sum + section.rows.filter((row) => /github|download/i.test(row[2] || "")).length;
+      }, 0);
 
-    const search = document.getElementById("search");
-    const visibleCount = document.getElementById("visible-count");
+      document.title = data.title;
+      document.getElementById("page-title").textContent = data.title;
+      document.getElementById("updated-label").textContent = data.updated;
+      document.getElementById("intro-text").textContent = data.intro;
+      document.getElementById("paper-count").textContent = totalRows;
+      document.getElementById("section-count").textContent = data.sections.length;
+      document.getElementById("code-count").textContent = codeLinks;
+      document.getElementById("visible-count").textContent = totalRows + " shown";
+      document.getElementById("sections").innerHTML = data.sections.map(renderSection).join("") + renderAcknowledgments(data.acknowledgments);
+      document.getElementById("side-nav").innerHTML = data.sections.map((section) => {
+        return '<a href="#' + slug(section.title) + '">' + escapeHtml(section.title) + '</a>';
+      }).join("") + '<a href="#acknowledgments">Acknowledgments</a>';
 
-    search.addEventListener("input", () => {
-      const query = search.value.trim().toLowerCase();
-      let visible = 0;
+      const search = document.getElementById("search");
+      const visibleCount = document.getElementById("visible-count");
 
-      document.querySelectorAll(".section[data-section]").forEach((section) => {
-        let sectionVisible = 0;
-        section.querySelectorAll("tbody tr").forEach((row) => {
-          const match = !query || row.dataset.search.includes(query);
-          row.classList.toggle("is-hidden", !match);
-          if (match) {
-            visible += 1;
-            sectionVisible += 1;
-          }
+      search.addEventListener("input", () => {
+        const query = search.value.trim().toLowerCase();
+        let visible = 0;
+
+        document.querySelectorAll(".section[data-section]").forEach((section) => {
+          let sectionVisible = 0;
+          section.querySelectorAll("tbody tr").forEach((row) => {
+            const match = !query || row.dataset.search.includes(query);
+            row.classList.toggle("is-hidden", !match);
+            if (match) {
+              visible += 1;
+              sectionVisible += 1;
+            }
+          });
+          section.classList.toggle("no-results", sectionVisible === 0);
         });
-        section.classList.toggle("no-results", sectionVisible === 0);
-      });
 
-      visibleCount.textContent = `${visible} shown`;
-    });
+        visibleCount.textContent = visible + " shown";
+      });
+    }
+
+    function renderLoadError(error) {
+      document.getElementById("updated-label").textContent = "README.md could not be loaded";
+      document.getElementById("intro-text").textContent = "Open this page through GitHub Pages or a local web server so the browser can fetch README.md.";
+      document.getElementById("sections").innerHTML = [
+        '<section class="section">',
+        '<div class="section-header"><h2>README.md load failed</h2></div>',
+        '<div class="empty-state" style="display:block">' + escapeHtml(error.message) + '</div>',
+        '</section>'
+      ].join("");
+    }
+
+    loadReadme().then(renderPage).catch(renderLoadError);
   </script>
 </body>
 </html>
