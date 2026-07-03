@@ -1,4 +1,4 @@
-# Awesome-rPPG-Method-List
+# Awesome-rPPG
 
 > Last updated: 2026-07-02
 
