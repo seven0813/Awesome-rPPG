@@ -118,6 +118,10 @@
       transition: background .15s, color .15s;
     }
     .top-nav a:hover { background: var(--surface-strong); color: var(--ink); text-decoration: none; }
+    .top-nav a.is-active {
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+    }
 
     .Github-button {
       flex: 0 0 auto; display: inline-flex; align-items: center; gap: 6px;
@@ -239,14 +243,35 @@
       text-transform: uppercase; letter-spacing: 0.1em;
     }
     .side-nav { display: grid; gap: 3px; }
-    .side-nav a {
-      display: block; padding: 7px 10px; border-radius: var(--radius-sm);
+    .side-nav a,
+    .side-nav-toggle {
+      display: block; width: 100%; padding: 7px 10px; border-radius: var(--radius-sm);
+      border: 0; background: transparent; text-align: left; font-family: inherit;
       color: var(--muted); font-size: 14px; font-weight: 620;
+      cursor: pointer;
       transition: background .15s, color .15s;
     }
-    .side-nav a:hover { background: var(--surface-strong); color: var(--ink); text-decoration: none; }
+    .side-nav a:hover,
+    .side-nav-toggle:hover { background: var(--surface-strong); color: var(--ink); text-decoration: none; }
+    .side-nav a.is-active,
+    .side-nav-toggle.is-active { background: var(--accent-soft); color: var(--accent-strong); }
+    .side-nav-group { display: grid; gap: 3px; }
+    .side-nav-toggle {
+      display: flex; align-items: center; justify-content: space-between; gap: 8px;
+    }
+    .side-nav-toggle svg {
+      flex: 0 0 auto; width: 10px; height: 10px; transition: transform .15s;
+    }
+    .side-nav-group.is-open .side-nav-toggle svg { transform: rotate(180deg); }
+    .side-nav-sub {
+      display: none; gap: 2px; padding: 2px 0 4px 10px;
+      margin-left: 10px; border-left: 1px solid var(--line);
+    }
+    .side-nav-group.is-open .side-nav-sub { display: grid; }
+    .side-nav-sub a { padding: 6px 9px; font-size: 13px; font-weight: 620; }
 
     .content { display: grid; gap: 22px; min-width: 0; max-width: 100%; overflow: hidden; }
+    #sections { display: grid; gap: 26px; }
 
     .toolbar {
       display: flex; align-items: center; gap: 12px; min-width: 0;
@@ -279,12 +304,15 @@
       display: flex; align-items: end; justify-content: space-between; gap: 16px;
       padding: 20px 22px 14px;
       border-bottom: 1px solid var(--line-light);
-      background: linear-gradient(180deg, var(--surface), color-mix(in srgb, var(--bg) 60%, var(--surface)));
+      border-left: 4px solid var(--accent);
+      background:
+        linear-gradient(90deg, var(--accent-soft), transparent 72%),
+        linear-gradient(180deg, var(--surface), color-mix(in srgb, var(--bg) 60%, var(--surface)));
     }
 
     h2 {
       margin: 0; font-size: clamp(20px, 2.8vw, 30px);
-      line-height: 1.15; letter-spacing: -0.01em; color: var(--ink);
+      line-height: 1.15; letter-spacing: 0; color: var(--accent-strong);
     }
 
     .section-count {
@@ -318,6 +346,21 @@
 
     td:first-child a { color: var(--ink-soft); transition: color .15s; }
     td:first-child a:hover { color: var(--accent); }
+
+    .subsection-heading {
+      display: flex; align-items: center; gap: 10px;
+      margin: 18px 0 0; padding: 16px 22px 10px;
+      border-top: 1px solid color-mix(in srgb, var(--amber) 35%, var(--line));
+      background: linear-gradient(90deg, color-mix(in srgb, var(--amber) 14%, transparent), transparent 74%);
+      color: var(--amber);
+      font-size: 16px; font-weight: 760; line-height: 1.3;
+      letter-spacing: 0;
+    }
+    .section-header + .subsection-heading { margin-top: 0; }
+    .subsection-heading::before {
+      content: ""; width: 4px; height: 18px; border-radius: 999px;
+      background: var(--amber); flex: 0 0 auto;
+    }
 
     .empty-state {
       display: none; padding: 32px 24px; text-align: center;
@@ -394,11 +437,8 @@
         <a href="#supervised-learning">Supervised</a>
         <a href="#self-supervised-learning">Self-Supervised</a>
         <a href="#dgdattta">DG/DA/TTA</a>
-        <a href="#data-synthesis">Data Synth.</a>
         <a href="#multimodal">Multimodal</a>
-        <a href="#other-methods">Other</a>
-        <a href="#benchmark">Benchmark</a>
-        <a href="#dataset">Dataset</a>
+        <a href="#other">Other</a>
       </nav>
       <a class="Github-button" href="https://github.com/seven0813/Awesome-rPPG" target="_blank" rel="noopener noreferrer">Github</a>
     </div>
@@ -488,6 +528,7 @@
       let intro = "";
       let acknowledgments = [];
       let current = null;
+      let currentSub = null;
 
       for (let i = 0; i < lines.length; i += 1) {
         const line = lines[i];
@@ -508,11 +549,26 @@
           continue;
         }
 
+        if (trimmed.startsWith("#### ")) {
+          currentSub = {
+            title: trimmed.replace(/^####\s+/, ""),
+            headers: [],
+            rows: []
+          };
+          if (current) {
+            current.subs = current.subs || [];
+            current.subs.push(currentSub);
+          }
+          continue;
+        }
+
         if (trimmed.startsWith("### ")) {
+          currentSub = null;
           current = {
             title: trimmed.replace(/^###\s+/, ""),
             headers: [],
-            rows: []
+            rows: [],
+            subs: []
           };
           sections.push(current);
           continue;
@@ -533,10 +589,11 @@
         if (trimmed.includes("|") && !trimmed.startsWith("|:")) {
           const cells = splitTableRow(trimmed);
           if (cells.length >= 3 && cells.some(Boolean)) {
+            const target = currentSub || current;
             if (/title/i.test(cells[0]) && /publication/i.test(cells[1])) {
-              current.headers = cells.slice(0, 3);
+              target.headers = cells.slice(0, 3);
             } else {
-              current.rows.push(cells.slice(0, 3));
+              target.rows.push(cells.slice(0, 3));
             }
           }
         }
@@ -545,31 +602,79 @@
       return { title, updated, intro, sections, acknowledgments };
     }
 
+    function renderTable(headers, rows, subId) {
+      if (!rows.length) return "";
+      return `
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>${headers.map((header) => `<th>${escapeHtml(header)}</th>`).join("")}</tr>
+            </thead>
+            <tbody>${rows.map((row) => `
+              <tr data-search="${escapeHtml(row.join(" ").toLowerCase())}">
+                ${row.map((cell) => `<td>${inlineMarkdown(cell || "-")}</td>`).join("")}
+              </tr>
+            `).join("")}</tbody>
+          </table>
+        </div>
+      `;
+    }
+
     function renderSection(section) {
       const id = slug(section.title);
-      const rows = section.rows.map((row) => `
-        <tr data-search="${escapeHtml(row.join(" ").toLowerCase())}">
-          ${row.map((cell) => `<td>${inlineMarkdown(cell || "-")}</td>`).join("")}
-        </tr>
-      `).join("");
+      const hasSubs = section.subs && section.subs.length > 0;
+      const totalCount = section.rows.length + (hasSubs ? section.subs.reduce((s, sub) => s + sub.rows.length, 0) : 0);
+
+      let body = "";
+      if (!hasSubs) {
+        body = renderTable(section.headers, section.rows, id);
+      } else {
+        body = renderTable(section.headers, section.rows, id);
+        section.subs.forEach((sub) => {
+          const subId = slug(sub.title);
+          body += `<h3 class="subsection-heading" id="${subId}">${escapeHtml(sub.title)}</h3>`;
+          body += renderTable(sub.headers, sub.rows, subId);
+        });
+      }
 
       return `
         <section class="section" id="${id}" data-section="${escapeHtml(section.title)}">
           <div class="section-header">
             <h2>${escapeHtml(section.title)}</h2>
-            <span class="section-count">${section.rows.length} entries</span>
+            <span class="section-count">${totalCount} entries</span>
           </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>${section.headers.map((header) => `<th>${escapeHtml(header)}</th>`).join("")}</tr>
-              </thead>
-              <tbody>${rows}</tbody>
-            </table>
-          </div>
+          ${body}
           <div class="empty-state">No matching entries in this section.</div>
         </section>
       `;
+    }
+
+    function renderSideNav(sections, acknowledgments) {
+      const sectionLinks = sections.map((section) => {
+        const id = slug(section.title);
+        const subs = section.subs || [];
+        if (!subs.length) {
+          return '<a href="#' + id + '">' + escapeHtml(section.title) + '</a>';
+        }
+
+        const subLinks = subs.map((sub) => {
+          const subId = slug(sub.title);
+          return '<a href="#' + subId + '" data-parent="#' + id + '">' + escapeHtml(sub.title) + '</a>';
+        }).join("");
+
+        return [
+          '<div class="side-nav-group" data-group="#' + id + '">',
+          '<button class="side-nav-toggle" type="button" data-target="#' + id + '" aria-expanded="false">',
+          '<span>' + escapeHtml(section.title) + '</span>',
+          '<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+          '</button>',
+          '<div class="side-nav-sub">' + subLinks + '</div>',
+          '</div>'
+        ].join("");
+      }).join("");
+
+      const ackLink = acknowledgments.length ? '<a href="#acknowledgments">Acknowledgments</a>' : "";
+      return sectionLinks + ackLink;
     }
 
     function renderAcknowledgments(items) {
@@ -596,9 +701,14 @@
 
     function renderPage(source) {
       const data = parseReadme(source);
-      const totalRows = data.sections.reduce((sum, section) => sum + section.rows.length, 0);
+      const totalRows = data.sections.reduce((sum, section) => {
+        const subRows = (section.subs || []).reduce((s, sub) => s + sub.rows.length, 0);
+        return sum + section.rows.length + subRows;
+      }, 0);
       const codeLinks = data.sections.reduce((sum, section) => {
-        return sum + section.rows.filter((row) => /github|download/i.test(row[2] || "")).length;
+        const mainLinks = section.rows.filter((row) => /github|download/i.test(row[2] || "")).length;
+        const subLinks = (section.subs || []).reduce((s, sub) => s + sub.rows.filter((row) => /github|download/i.test(row[2] || "")).length, 0);
+        return sum + mainLinks + subLinks;
       }, 0);
 
       document.title = data.title;
@@ -610,9 +720,9 @@
       document.getElementById("code-count").textContent = codeLinks;
       document.getElementById("visible-count").textContent = totalRows + " shown";
       document.getElementById("sections").innerHTML = data.sections.map(renderSection).join("") + renderAcknowledgments(data.acknowledgments);
-      document.getElementById("side-nav").innerHTML = data.sections.map((section) => {
-        return '<a href="#' + slug(section.title) + '">' + escapeHtml(section.title) + '</a>';
-      }).join("") + '<a href="#acknowledgments">Acknowledgments</a>';
+      document.getElementById("side-nav").innerHTML = renderSideNav(data.sections, data.acknowledgments);
+      setupNavInteractions();
+      updateActiveNav();
 
       const search = document.getElementById("search");
       const visibleCount = document.getElementById("visible-count");
@@ -636,6 +746,67 @@
 
         visibleCount.textContent = visible + " shown";
       });
+    }
+
+    function updateActiveNav(hash = window.location.hash || "#survey") {
+      const activeHash = hash || "#survey";
+
+      document.querySelectorAll(".top-nav a, .side-nav a, .side-nav-toggle").forEach((item) => {
+        item.classList.remove("is-active");
+      });
+
+      document.querySelectorAll('a[href="' + activeHash + '"]').forEach((link) => {
+        link.classList.add("is-active");
+      });
+
+      const otherGroup = document.querySelector('.side-nav-group[data-group="#other"]');
+      if (otherGroup && (activeHash === "#other" || otherGroup.querySelector('a[href="' + activeHash + '"]'))) {
+        const otherTopLink = document.querySelector('.top-nav a[href="#other"]');
+        if (otherTopLink) otherTopLink.classList.add("is-active");
+      }
+
+      document.querySelectorAll(".side-nav-group").forEach((group) => {
+        const groupHash = group.dataset.group;
+        const containsActiveSub = !!group.querySelector('a[href="' + activeHash + '"]');
+        const isOpen = activeHash === groupHash || containsActiveSub;
+        group.classList.toggle("is-open", isOpen);
+        const toggle = group.querySelector(".side-nav-toggle");
+        if (toggle) {
+          toggle.setAttribute("aria-expanded", String(isOpen));
+          toggle.classList.toggle("is-active", activeHash === groupHash || containsActiveSub);
+        }
+      });
+    }
+
+    function navigateToHash(hash) {
+      const target = hash ? document.querySelector(hash) : null;
+      if (hash) history.pushState(null, "", hash);
+      if (target) target.scrollIntoView({ block: "start" });
+      updateActiveNav(hash);
+    }
+
+    function setupNavInteractions() {
+      document.querySelectorAll(".side-nav-toggle").forEach((toggle) => {
+        toggle.addEventListener("click", () => {
+          const group = toggle.closest(".side-nav-group");
+          const shouldOpen = !group.classList.contains("is-open");
+          group.classList.toggle("is-open", shouldOpen);
+          toggle.setAttribute("aria-expanded", String(shouldOpen));
+          if (toggle.dataset.target) {
+            navigateToHash(toggle.dataset.target);
+          }
+        });
+      });
+
+      document.querySelectorAll(".side-nav a").forEach((link) => {
+        link.addEventListener("click", () => updateActiveNav(link.hash));
+      });
+
+      document.querySelectorAll(".top-nav a").forEach((link) => {
+        link.addEventListener("click", () => updateActiveNav(link.hash));
+      });
+
+      window.addEventListener("hashchange", () => updateActiveNav());
     }
 
     function renderLoadError(error) {

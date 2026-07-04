@@ -1,20 +1,22 @@
 # Awesome-rPPG
 
-> Last updated: 2026-07-03
+> Last updated: 2026-07-04
 
 This repository is a collection of rPPG methods. I will update it gradually, if you have any suggestions or questions, please feel free to contact me. If you know any other methods, please create a issue or pull request. If you find this repository helpful, please give me a star.
 
-- [Awesome Papers](#Awesome-Papers)
+- [Awesome Papers](#awesome-papers)
   - [Survey](#survey)
   - [Traditional Methods](#traditional-methods)
   - [Supervised Learning](#supervised-learning)
   - [Self-Supervised Learning](#self-supervised-learning)
   - [DG/DA/TTA](#dgdattta)
-  - [Data Synthesis](#data-synthesis)
   - [Multimodal](#multimodal)
-  - [Other Methods](#other-methods)
-  - [Benchmark](#benchmark)
-  - [Dataset](#dataset)
+  - [Other](#other)
+    - [Miscellaneous](#miscellaneous)
+    - [Data Synthesis](#data-synthesis)
+    - [Privacy Protection](#privacy-protection)
+    - [Benchmark](#benchmark)
+    - [Dataset](#dataset)
 - [Acknowledgments](#acknowledgments)
 
 
@@ -50,7 +52,6 @@ This repository is a collection of rPPG methods. I will update it gradually, if 
 |[**Passive heart-rate monitoring during smartphone use in everyday life**](https://www.nature.com/articles/s41586-026-10507-6)| Nature 2026 | -|
 |[**PhysNeXt: Next-Generation Dual-Branch Structured Attention Fusion Network for Remote Photoplethysmography Measurement**](http://arxiv.org/abs/2603.19752) (**PhysNeXt**)| CVPR 2026 | -|
 |[**PHASE-Net: Physics-Grounded Harmonic Attention System for Efficient Remote Photoplethysmography Measurement**](http://arxiv.org/abs/2509.24850) (**PHASE-Net**)| CVPR 2026 | [github](https://github.com/Alex036225/PhaseNet)|
-|[**PhysLLM: Harnessing Large Language Models for Cross-Modal Remote Physiological Sensing**](http://arxiv.org/abs/2505.03621) (**PhysLLM**)| ICLR 2026 | [github](https://github.com/Alex036225/PhysLLM)|
 |[**FreqPhys: Repurposing Implicit Physiological Frequency Prior for Robust Remote Photoplethysmography**](http://arxiv.org/abs/2604.00534)| ECCV 2026 | -|
 |[**PhysVLM: Vision-Language Model for Generalizable Multitask Remote Physiological Measurement**](https://doi.org/10.1109/TIM.2026.3671908) (**PhysVLM**)| IEEE TIM 2026 | -|
 |[**RhythmGuassian: Repurposing Generalizable Gaussian Model For Remote Physiological Measurement**](https://openaccess.thecvf.com/content/ICCV2025/papers/Lu_RhythmGuassian_Repurposing_Generalizable_Gaussian_Model_For_Remote_Physiological_Measurement_ICCV_2025_paper.pdf) (**RhythmGuassian**)| ICCV 2025 | [github](https://github.com/LuPaoPao/RhythmGuassian)|
@@ -99,6 +100,7 @@ This repository is a collection of rPPG methods. I will update it gradually, if 
 |[**Visual heart rate estimation with convolutional neural network**](https://cmp.felk.cvut.cz/~spetlrad/ecg-fitness/visual-heart-rate.pdf) (**HR-CNN**)| BMVC 2018| [github](https://github.com/radimspetlik/hr-cnn) |
 |[**Instantaneous Physiological Estimation Using Video Transformers**](https://link.springer.com/chapter/10.1007/978-3-031-14771-5_22) (**instantaneous_transformer**)| -| [github](https://github.com/revanurambareesh/instantaneous_transformer)|
 
+
 ### Self-Supervised Learning
 
 |  Title  |   Publication  |  Code   |
@@ -141,12 +143,37 @@ This repository is a collection of rPPG methods. I will update it gradually, if 
 |[**Domain Generalized RPPG Network: Disentangled Feature Learning with Domain Permutation and Domain Augmentation**](https://link.springer.com/10.1007/978-3-031-26284-5_3) (**DG-rPPGNet**)| ACCV 2022 | -|
 
 
-### Data Synthesis
+### Multimodal
+
+|  Title  |   Publication  |  Code   |
+|:--------|:--------:|:--------:|
+|[**PhysLLM: Harnessing Large Language Models for Cross-Modal Remote Physiological Sensing**](http://arxiv.org/abs/2505.03621) (**PhysLLM**)| ICLR 2026 | [github](https://github.com/Alex036225/PhysLLM)|
+|[**CardiacMamba: A Multimodal RGB-RF Fusion Framework with State Space Models for Remote Physiological Measurement**](http://arxiv.org/abs/2502.13624) (**CardiacMamba**)| IEEE TIM 2025 | [github](https://github.com/WuZheng42/CardiacMamba)|
+|[**Bootstrapping Vision-Language Models for Frequency-Centric Self-Supervised Remote Physiological Measurement**](https://doi.org/10.1007/s11263-025-02388-5) | IJCV 2025 | [github](https://github.com/yuezijie/Bootstrapping-VLM-for-Frequency-centric-Self-supervised-Remote-Physiological-Measurement)|
+|[**Spatial Alignment and Temporal Matching Adapter for Video-Radar Remote Physiological Measurement**](https://openaccess.thecvf.com/content/ICCV2025/papers/Liang_Spatial_Alignment_and_Temporal_Matching_Adapter_for_Video-Radar_Remote_Physiological_ICCV_2025_paper.pdf) (**SATM**)| ICCV 2025 | -|
+|[**FusionPhys: A Flexible Framework for Fusing Complementary Sensing Modalities in Remote Physiological Measurement**](https://openaccess.thecvf.com/content/ICCV2025/papers/Ying_FusionPhys_A_Flexible_Framework_for_Fusing_Complementary_Sensing_Modalities_in_ICCV_2025_paper.pdf) (**FusionPhys**)| ICCV 2025 | [github](https://github.com/ChH-Ying/FusonPhys)|
+|[**Fusion-Vital: Video-RF Fusion Transformer for Advanced Remote Physiological Measurement**](https://ojs.aaai.org/index.php/AAAI/article/view/27898) (**Fusion-Vital**)| AAAI 2024 | -|
+|[**Evidential Remote Physiological Measurement via Uncertainty-aware Fusion of Video and RF**](https://dl.acm.org/doi/10.1145/3746027.3754594) | ACM MM 2025 | -|
+|[**Blending Camera and 77 GHz Radar Sensing for Equitable, Robust Plethysmography**](https://dl.acm.org/doi/10.1145/3528223.3530161) | ACM TOG 2022 | -|
+
+
+### Other
+
+#### Miscellaneous
+
+|  Title  |   Publication  |  Code   |
+|:--------|:--------:|:--------:|
+|[**Orientation-conditioned Facial Texture Mapping for Video-based Facial Remote Photoplethysmography Estimation**](http://arxiv.org/abs/2404.09378) | arXiv 2024 | -|
+|[**Evaluation of Video-Based rPPG in Challenging Environments: Artifact Mitigation and Network Resilience**](http://arxiv.org/abs/2405.01230) | arXiv 2024 | -|
+|[**Learning Motion-Robust Remote Photoplethysmography through Arbitrary Resolution Videos**](http://arxiv.org/abs/2211.16922) | AAAI 2023 | [github](https://github.com/LJW-GIT/Arbitrary_Resolution_rPPG)|
+
+
+#### Data Synthesis
 
 |  Title  |   Publication  |  Code   |
 |:--------|:--------:|:--------:|
 |[**Syn-rPPG: Improving Unsupervised Remote Photoplethysmography Extraction with Synthesized Videos using Generative Models**](https://doi.org/10.1016/j.engappai.2025.110504) (**Syn-rPPG**)| EAAI 2025 | -|
-|[**Motion Matters: Neural Motion Transfer for Better Camera Physiological Measurement**](http://arxiv.org/abs/2303.12059) | WACV 2024 | -|
+|[**Motion Matters: Neural Motion Transfer for Better Camera Physiological Measurement**](http://arxiv.org/abs/2303.12059) | WACV 2024 Oral | [github](https://github.com/yahskapar/MA-rPPG-Video-Toolbox)|
 |[**PhysFlow: Skin Tone Transfer for Remote Heart Rate Estimation through Conditional Normalizing Flows**](https://bmva-archive.org.uk/bmvc/2024/papers/Paper_136/paper.pdf) (**PhysFlow**)| BMCV 2024 | -|
 |[**Video-based Heart Rate Estimation from Challenging Scenarios Using Synthetic Video Generation**](https://doi.org/10.1016/j.bspc.2024.106598) | BSPC 2024 | -|
 |[**Training Robust Deep Physiological Measurement Models with Synthetic Video-based Data**](http://arxiv.org/abs/2311.05371) | arXiv 2023 | -|
@@ -157,27 +184,17 @@ This repository is a collection of rPPG methods. I will update it gradually, if 
 |[**Advancing Non-Contact Vital Sign Measurement using Synthetic Avatars**](http://arxiv.org/abs/2010.12949) | arXiv 2020 | -|
 
 
-### Multimodal
+#### Privacy Protection
 
 |  Title  |   Publication  |  Code   |
 |:--------|:--------:|:--------:|
-|[**CardiacMamba: A Multimodal RGB-RF Fusion Framework with State Space Models for Remote Physiological Measurement**](http://arxiv.org/abs/2502.13624) (**CardiacMamba**)| arXiv 2025 | [github](https://github.com/WuZheng42/CardiacMamba)|
-|[**Spatial Alignment and Temporal Matching Adapter for Video-Radar Remote Physiological Measurement**](https://openaccess.thecvf.com/content/ICCV2025/papers/Liang_Spatial_Alignment_and_Temporal_Matching_Adapter_for_Video-Radar_Remote_Physiological_ICCV_2025_paper.pdf) (**SATM**)| ICCV 2025 | -|
-|[**FusionPhys: A Flexible Framework for Fusing Complementary Sensing Modalities in Remote Physiological Measurement**](https://openaccess.thecvf.com/content/ICCV2025/papers/Ying_FusionPhys_A_Flexible_Framework_for_Fusing_Complementary_Sensing_Modalities_in_ICCV_2025_paper.pdf) (**FusionPhys**)| ICCV 2025 | [github](https://github.com/ChH-Ying/FusonPhys)|
-|[**Fusion-Vital: Video-RF Fusion Transformer for Advanced Remote Physiological Measurement**](https://ojs.aaai.org/index.php/AAAI/article/view/27898) (**Fusion-Vital**)| AAAI 2024 | -|
-|[**Blending Camera and 77 GHz Radar Sensing for Equitable, Robust Plethysmography**](https://dl.acm.org/doi/10.1145/3528223.3530161) | ACM TOG 2022 | -|
+|[**PulseEdit: Editing Physiological Signals in Facial Videos for Privacy Protection**](https://doi.org/10.1109/TIFS.2022.3142993) (**PulseEdit**)| IEEE TIFS 2022 | - |
+|[**Phys-EdiGAN: A privacy-preserving method for editing physiological signals in facial videos**](https://doi.org/10.1016/j.patcog.2025.111966) (**Phys-EdiGAN**)| Pattern Recognition 2026 | - |
+|[**Privacy-Phys: Facial Video-Based Physiological Modification for Privacy Protection**](https://doi.org/10.1109/LSP.2022.3185964) (**Privacy-Phys**)| IEEE SPL 2022 | - |
+|[**De-identification of facial videos while preserving remote physiological utility**](https://papers.bmvc2023.org/0230.pdf) | BMVC 2023 | [github](https://github.com/marukosan93/De-id_rPPG) |
 
 
-### Other Methods
-
-|  Title  |   Publication  |  Code   |
-|:--------|:--------:|:--------:|
-|[**Orientation-conditioned Facial Texture Mapping for Video-based Facial Remote Photoplethysmography Estimation**](http://arxiv.org/abs/2404.09378) | arXiv 2024 | -|
-|[**Evaluation of Video-Based rPPG in Challenging Environments: Artifact Mitigation and Network Resilience**](http://arxiv.org/abs/2405.01230) | arXiv 2024 | -|
-|[**Learning Motion-Robust Remote Photoplethysmography through Arbitrary Resolution Videos**](http://arxiv.org/abs/2211.16922) | AAAI 2023 | [github](https://github.com/LJW-GIT/Arbitrary_Resolution_rPPG)|
-
-
-### Benchmark
+#### Benchmark
 
 |  Title  |   Publication  |  Code   |
 |:--------|:--------:|:--------:|
@@ -188,7 +205,7 @@ This repository is a collection of rPPG methods. I will update it gradually, if 
 |[**iPhys: An Open Non-Contact Imaging-Based Physiological Measurement Toolbox**](https://arxiv.org/pdf/1901.04366)(matlab) | arXiv, 2019 | [github](https://github.com/danmcduff/iphys-toolbox)|
 
 
-### Dataset
+#### Dataset
 
 |  Title  |   Publication  |  Url   |
 |:--------|:--------:|:--------:|
@@ -196,7 +213,7 @@ This repository is a collection of rPPG methods. I will update it gradually, if 
 |[**Exploring Remote Physiological Signal Measurement under Dynamic Lighting Conditions at Night: Dataset, Experiment, and Analysis**](http://arxiv.org/abs/2507.04306) (**DLCN**) | arXiv 2025 | [download](https://github.com/dalaoplan/Happp-rPPG-Toolkit)|
 |[**iBVP Dataset: RGB-Thermal rPPG Dataset with High Resolution Signal Quality Labels**](https://doi.org/10.3390/electronics13071334)(**iBVP**) | Electronics 2024 | [download](https://github.com/PhysiologicAILab/iBVP-Dataset)|
 |[**ReactioNet: Learning High-order Facial Behavior from Universal Stimulus-Reaction by Dyadic Relation Reasoning**](https://openaccess.thecvf.com/content/ICCV2023/papers/Li_ReactioNet_Learning_High-Order_Facial_Behavior_from_Universal_Stimulus-Reaction_by_Dyadic_ICCV_2023_paper.pdf)(**BP4D+**) | ICCV 2023 | [download](https://www.cs.binghamton.edu/~lijun/Research/3DFE/3DFE_Analysis.html)|
-[**MMPD: Multi-Domain Mobile Video Physiology Dataset**](https://arxiv.org/pdf/2302.03840)(**MMPD**) | EMBC 2023 | [download](https://github.com/McJackTang/MMPD_rPPG_dataset?tab=readme-ov-file)|
+|[**MMPD: Multi-Domain Mobile Video Physiology Dataset**](https://arxiv.org/pdf/2302.03840)(**MMPD**) | EMBC 2023 | [download](https://github.com/McJackTang/MMPD_rPPG_dataset?tab=readme-ov-file)|
 |[**SCAMPS: Synthetics for Camera Measurement of Physiological Signals**](https://proceedings.neurips.cc/paper_files/paper/2022/file/1838feeb71c4b4ea524d0df2f7074245-Paper-Datasets_and_Benchmarks.pdf)(**SCAMPS**) | NeurIPS 2022 | [download](https://github.com/danmcduff/scampsdataset)|
 |[**Synthetic Generation of Face Videos with Plethysmograph Physiology**](https://openaccess.thecvf.com/content/CVPR2022/papers/Wang_Synthetic_Generation_of_Face_Videos_With_Plethysmograph_Physiology_CVPR_2022_paper.pdf) (**UCLA-rPPG**) | CVPR 2022 | [download](http://visual.ee.ucla.edu/rppg_avatars.htm/)|
 |[**Deception Detection and Remote Physiological Monitoring: A Dataset and Baseline Experimental Results**](https://arxiv.org/pdf/2106.06583) (**DDPM**) | IEEE TBIOM 2021 | [download](https://cvrl.nd.edu/projects/data/#deception-detection-and-%20physiological-monitoringddpm)|
@@ -207,7 +224,6 @@ This repository is a collection of rPPG methods. I will update it gradually, if 
 |[**Multimodal Spontaneous Emotion Corpus for Human Behavior Analysis**](https://openaccess.thecvf.com/content_cvpr_2016/papers/Zhang_Multimodal_Spontaneous_Emotion_CVPR_2016_paper.pdf) (**MMSE-HR**) | CVPR 2016 | [download](https://binghamton.technologypublisher.com/tech/MMSE-HR_dataset_(Multimodal_Spontaneous_Expression-Heart_Rate_dataset))|
 |[**Non-contact Video-based Pulse Rate Measurement on a Mobile Service Robot**](https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=6926392) (**PURE**) |  2014 | [download](https://www.tu-ilmenau.de/universitaet/fakultaeten/fakultaet-informatik-und-automatisierung/profil/institute-und-fachgebiete/institut-fuer-technische-informatik-und-ingenieurinformatik/fachgebiet-neuroinformatik-und-kognitive-robotik/data-sets-code/pulse-rate-detection-dataset-pure)|
 |[**DEAP: A Database for Emotion Analysis Using Physiological Signals**](https://ieeexplore.ieee.org/document/5871728) (**DEAP**) | IEEE TAFFC 2011 | [download](https://www.eecs.qmul.ac.uk/mmv/datasets/deap/)|
-
 
 
 
