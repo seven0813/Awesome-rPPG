@@ -108,7 +108,7 @@ This repository is a collection of rPPG methods. I will update it gradually, if 
 |[**Style-rPPG: Exploration and Analysis of Style Transfer in Unsupervised Remote Physiological Measurement**](https://doi.org/10.1016/j.eswa.2024.126310) (**Style-rPPG**)| ESWA 2025 | -|
 |[**Semi-rPPG: Semi-Supervised Remote Physiological Measurement with Curriculum Pseudo-Labeling**](http://arxiv.org/abs/2502.03855) (**Semi-rPPG**)| IEEE TIM 2025 | -|
 |[**rPPG-NDCL: Unsupervised Remote Physiological Measurement Via Noise-Disentangled Contrastive Learning**](https://doi.org/10.1109/ICIP55913.2025.11084290) (**rPPG-NDCL**)| ICIP 2025 | [github](https://github.com/Tianyang-Dai/rPPG-NDCL)|
-|[**Contrast-Phys+: Unsupervised and Weakly-Supervised Video-Based Remote Physiological Measurement via Spatiotemporal Contrast**](https://doi.org/10.1109/TPAMI.2024.3367910) (**Contrast-Phys+**)| IEEE TPAMI 2024 | -|
+|[**Contrast-Phys+: Unsupervised and Weakly-Supervised Video-Based Remote Physiological Measurement via Spatiotemporal Contrast**](https://doi.org/10.1109/TPAMI.2024.3367910) (**Contrast-Phys+**)| IEEE TPAMI 2024 | [github](https://github.com/zhaodongsun/contrast-phys)|
 |[**RS-rPPG: Robust Self-Supervised Learning for rPPG**](https://brosdocs.net/fg2024/013.pdf) (**RS-rPPG**)| IEEE FG 2024 | [github](https://github.com/marukosan93/RS-rPPG)|
 |[**SiNC+: Adaptive Camera-Based Vitals with Unsupervised Learning of Periodic Signals**](http://arxiv.org/abs/2404.13449) (**SiNC+**)| arXiv 2024 | -|
 |[**Self-Similarity Prior Distillation for Unsupervised Remote Physiological Measurement**](https://doi.org/10.1109/TMM.2024.3405720) (**SSPD**)| IEEE TMM 2024 | -|
