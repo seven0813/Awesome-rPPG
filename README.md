@@ -63,6 +63,7 @@ This repository is a collection of rPPG methods. I will update it gradually, if 
 |[**Memory-efficient Low-latency Remote Photoplethysmography through Temporal-Spatial State Space Duality**](http://arxiv.org/abs/2504.01774) (**ME-rPPG**)| arXiv 2025 | -|
 |[**Remote Photoplethysmography in Real-World and Extreme Lighting Scenarios**](http://arxiv.org/abs/2503.11465) | CVPR 2025 | -|
 |[**Efficient and Robust Multidimensional Attention in Remote Physiological Sensing through Target Signal Constrained Factorization**](http://arxiv.org/abs/2505.07013) (**MMRPhys**)| arXiv 2025 | -|
+|[**A machine learning-based approach for constructing remote photoplethysmogram signals from video cameras**](https://www.nature.com/articles/s43856-024-00519-6)| Communications Medicine 2024 | [github](https://github.com/rodrigo-castellano/ML_based_rPPG_construction)|
 |[**PhysMamba: Efficient Remote Physiological Measurement with SlowFast Temporal Difference Mamba**](http://arxiv.org/abs/2409.12031) (**PhysMamba**)| CCBR 2024 | [github](https://github.com/Chaoqi31/PhysMamba)|
 |[**RhythmMamba: Fast Remote Physiological Measurement with Arbitrary Length Videos**](http://arxiv.org/abs/2404.06483) (**RhythmMamba**)| arXiv 2024 | [github](https://github.com/zizheng-guo/RhythmMamba)|
 |[**RhythmFormer: Extracting Patterned rPPG Signals based on Periodic Sparse Attention**](http://arxiv.org/abs/2402.12788) (**RhythmFormer**)| arXiv 2024 | [github](https://github.com/zizheng-guo/RhythmFormer)|
@@ -204,6 +205,7 @@ This repository is a collection of rPPG methods. I will update it gradually, if 
 
 |  Title  |   Publication  |  Code   |
 |:--------|:--------:|:--------:|
+|[**Evaluating RGB channels in remote photoplethysmography: a comparative study with contact-based PPG**](https://www.frontiersin.org/articles/10.3389/fphys.2023.1296277)| Frontiers in Physiology 2023 | - |
 |[**rPPG-Toolbox: Deep Remote PPG Toolbox**](https://arxiv.org/abs/2210.00716) (**rPPG-Toolbox**)| NeurIPS 2023 | [github](https://github.com/ubicomplab/rPPG-Toolbox)|
 |[**Remote Bio-Sensing: Open Source Benchmark Framework for Fair Evaluation of rPPG**](https://arxiv.org/abs/2307.12644) | arXiv 2023 | [github](https://github.com/remotebiosensing/rppg)|
 |[**pyVHR: a Python framework for remote photoplethysmography**](https://pubmed.ncbi.nlm.nih.gov/35494872/)(**pyVHR**) | Computer Science 2022 | [github](https://github.com/phuselab/pyVHR)|
